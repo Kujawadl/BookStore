@@ -1,22 +1,22 @@
 <?php
 return array(
-  'version' => 
+  'version' =>
   array(
-    'app' => 
+    'app' =>
     array(
-      'default' => 
+      'default' =>
       array(
-        0 => '001_create_colleges',
-        1 => '002_create_departments',
-        2 => '003_create_courses',
+        0 => '001_contacts',
+        1 => '002_authors',
+        3 => '003_books'
       ),
     ),
-    'module' => 
+    'module' =>
     array(
     ),
-    'package' => 
+    'package' =>
     array(
-      'auth' => 
+      'auth' =>
       array(
         0 => '001_auth_create_usertables',
         1 => '002_auth_create_grouptables',
