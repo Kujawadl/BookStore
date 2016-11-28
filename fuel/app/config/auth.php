@@ -15,6 +15,6 @@
 return array(
     'driver' => array('Simpleauth'),
     'verify_multiple_logins' => false,
-    'salt' => '@,V9naf#>e1.r-irlTLfm2c_`hEO!DW2 |}`Du$E/2gAj^1xK)At]!XfGr,{[QT!',
+    'salt' => 'SALT',
     'iterations' => 10000,
 );

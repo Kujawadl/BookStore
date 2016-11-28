@@ -107,7 +107,7 @@ return array(
 	/**
 	 * Salt for the login hash
 	 */
-	'login_hash_salt' => '@,V9naf#>e1.r-irlTLfm2c_`hEO!DW2 |}`Du$E/2gAj^1xK)At]!XfGr,{[QT!',
+	'login_hash_salt' => 'SALT',
 
 	/**
 	 * $_POST key for login username
