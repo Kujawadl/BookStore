@@ -84,9 +84,9 @@ class Contacts
 
     function down()
     {
-       \DBUtil::drop_table('contact');
-       \DBUtil::drop_table('contact_phone');
-       \DBUtil::drop_table('contact_email');
        \DBUtil::drop_table('contact_address');
+       \DBUtil::drop_table('contact_email');
+       \DBUtil::drop_table('contact_phone');
+       \DBUtil::drop_table('contact');
     }
 }

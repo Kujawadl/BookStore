@@ -69,8 +69,8 @@ class Books
 
     function down()
     {
-       \DBUtil::drop_table('books');
-       \DBUtil::drop_table('categories');
-       \DBUtil::drop_table('book_categories');
+      \DBUtil::drop_table('book_categories');
+      \DBUtil::drop_table('categories');
+      \DBUtil::drop_table('books');
     }
 }
