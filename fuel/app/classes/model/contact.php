@@ -6,6 +6,9 @@ class Model_Contact extends \Orm\Model
     'id'
   );
 
+  // Each contact information record may have many phone numbers.
+  // Each contact information record may have many email address.
+  // Each contact information record may have many addresses.
   protected static $_has_many = array(
     'Phones' => array(
       'key_from'       => 'id',
@@ -31,15 +34,18 @@ class Model_Contact extends \Orm\Model
   );
 
   protected static $_observers = array(
-    'Orm\Observer_CreatedAt' => array(
-			'events'          => array('before_insert'),
+		'Orm\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
 			'mysql_timestamp' => false,
 		),
 		'Orm\Observer_UpdatedAt' => array(
-			'events'          => array('before_update'),
+			'events' => array('before_update'),
 			'mysql_timestamp' => false,
 		),
-  );
+    'Orm\Observer_Validation' => array(
+      'events' => array('before_save')
+    )
+	);
 
   protected static $_table_name = 'contact';
 }
@@ -48,9 +54,24 @@ class Model_Contact_Phone extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
-    'Phone'
+    'Phone',
+    'Type' => array(
+      'data_type'  => 'varchar',
+      'label'      => 'Type',
+      'validation' => array('required'),
+      'form'       => array(
+        'type' => 'select',
+        'options' => array(
+          'Home',
+          'Work',
+          'Cell',
+          'Other'
+        )
+      )
+    )
   );
 
+  // Each phone number belongs to one contact information record.
   protected static $_belongs_to = array(
     'Contact' => array(
       'key_from'       => 'id',
@@ -62,7 +83,7 @@ class Model_Contact_Phone extends \Orm\Model
   );
 
   protected static $_observers = array(
-    'Orm\Observer_CreatedAt' => array(
+		'Orm\Observer_CreatedAt' => array(
 			'events' => array('before_insert'),
 			'mysql_timestamp' => false,
 		),
@@ -70,7 +91,10 @@ class Model_Contact_Phone extends \Orm\Model
 			'events' => array('before_update'),
 			'mysql_timestamp' => false,
 		),
-  );
+    'Orm\Observer_Validation' => array(
+      'events' => array('before_save')
+    )
+	);
 
   protected static $_table_name = 'contact_phone';
 }
@@ -82,6 +106,7 @@ class Model_Contact_Email extends \Orm\Model
     'Email'
   );
 
+  // Each email address belongs to one contact information record.
   protected static $_belongs_to = array(
     'Contact' => array(
       'key_from'       => 'id',
@@ -93,7 +118,7 @@ class Model_Contact_Email extends \Orm\Model
   );
 
   protected static $_observers = array(
-    'Orm\Observer_CreatedAt' => array(
+		'Orm\Observer_CreatedAt' => array(
 			'events' => array('before_insert'),
 			'mysql_timestamp' => false,
 		),
@@ -101,7 +126,10 @@ class Model_Contact_Email extends \Orm\Model
 			'events' => array('before_update'),
 			'mysql_timestamp' => false,
 		),
-  );
+    'Orm\Observer_Validation' => array(
+      'events' => array('before_save')
+    )
+	);
 
   protected static $_table_name = 'contact_email';
 }
@@ -113,9 +141,24 @@ class Model_Contact_Address extends \Orm\Model
     'Street',
     'City',
     'State',
-    'Zip'
+    'Zip',
+    'Type' => array(
+      'data_type'  => 'varchar',
+      'label'      => 'Type',
+      'validation' => array('required'),
+      'form'       => array(
+        'type' => 'select',
+        'options' => array(
+          'Primary',
+          'Shipping',
+          'Billing',
+          'Other'
+        )
+      )
+    )
   );
 
+  // Each address belongs to one contact information record.
   protected static $_belongs_to = array(
     'Contact' => array(
       'key_from'       => 'id',
@@ -127,7 +170,7 @@ class Model_Contact_Address extends \Orm\Model
   );
 
   protected static $_observers = array(
-    'Orm\Observer_CreatedAt' => array(
+		'Orm\Observer_CreatedAt' => array(
 			'events' => array('before_insert'),
 			'mysql_timestamp' => false,
 		),
@@ -135,7 +178,10 @@ class Model_Contact_Address extends \Orm\Model
 			'events' => array('before_update'),
 			'mysql_timestamp' => false,
 		),
-  );
+    'Orm\Observer_Validation' => array(
+      'events' => array('before_save')
+    )
+	);
 
   protected static $_table_name = 'contact_address';
 }

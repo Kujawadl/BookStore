@@ -1,11 +1,10 @@
 <?php
 
-class Model_Author extends \Orm\Model
+class Model_Customer extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
     'Contact',
-    'Books',
     'FName' => array(
       'data_type'  => 'varchar',
       'label'      => 'First Name',
@@ -17,27 +16,6 @@ class Model_Author extends \Orm\Model
       'label'      => 'Last Name',
       'validation' => array('required'),
       'form'       => array('type' => 'text')
-    ),
-    'Gender' => array(
-      'data_type'  => 'char',
-      'label'      => 'Gender',
-      'validation' => array('required'),
-      'form'       => array(
-        'type'     => 'select',
-        'options'  => array(
-          'm' => 'Male',
-          'f' => 'Female'
-        )
-      )
-    ),
-    'DOB' => array(
-      'data_type'  => 'date',
-      'label'      => 'Date of Birth',
-      'validation' => array('required', 'valid_date'),
-      'form'       => array(
-        'type'       => 'text',
-        'attributes' => array('class' => 'datepicker')
-      )
     )
   );
 
@@ -54,14 +32,11 @@ class Model_Author extends \Orm\Model
 
   // Each author may have many books.
   // Each book may have many authors.
-  protected static $_many_many = array(
+  protected static $_has_many = array(
     'Author' => array(
       'key_from'         => 'id',
-      'key_through_from' => 'Author',
-      'table_through'    => 'book_authors',
-      'key_through_to'   => 'Book',
-      'model_to'         => 'Model_Book',
-      'key_to'           => 'id',
+      'model_to'         => 'Model_Order',
+      'key_to'           => 'customer',
       'cascade_save'     => true,
       'cascade_delete'   => true
     )
@@ -81,5 +56,5 @@ class Model_Author extends \Orm\Model
     )
 	);
 
-	protected static $_table_name = 'authors';
+	protected static $_table_name = 'customers';
 }
