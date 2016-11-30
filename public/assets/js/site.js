@@ -17,7 +17,7 @@ $(document).ready(function() {
     id = $(this).closest(".frmUpdateCart").attr('item');
     title = $(this).closest('tr').find('.bookTitle').text();
 
-    sweetalert(
+    swal(
       {
         title: "Are you sure?",
         text: "Remove " + title + " from cart?",
