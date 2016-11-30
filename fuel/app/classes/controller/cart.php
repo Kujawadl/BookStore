@@ -34,7 +34,7 @@ class Controller_Cart extends Controller_Template
         $Cart->Save();
       } elseif (count($Query) == 1) {
         // Get the current cart
-        $Cart = $Query[0];
+        $Cart = $Query;
       } else {
         // @TODO Delete all possible carts and notify user there was an error.
       }
