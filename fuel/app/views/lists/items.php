@@ -15,7 +15,7 @@
               <div class='col-md-3'>
                 <form class='frmUpdateCart' item='<?php echo($Book->id); ?>'>
                   Qty:
-                  <input type='number' value='<?php echo($Item->Quantity); ?>' min='0'/>
+                  <input type='number' value='<?php echo($Item->Quantity); ?>' min='0' style='width: 50px;'/>
                   <button class='btn btn-default btn-sm' type='submit'>Update</button>
                   <a class="btnRemoveFromCart" href='#'>
                     <span class='glyphicon glyphicon-remove-sign glyphicon-delete' style='font-size: 1.5em; top: 0.25em;' aria-hidden='true'></span>
