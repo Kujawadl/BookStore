@@ -58,7 +58,7 @@ class Controller_Cart extends Controller_Template
   {
     $data['Cart'] = $this->Cart;
     $this->template->title   = "View Cart";
-    $this->template->content = View::forge('list/cart', $data);
+    $this->template->content = View::forge('lists/items', $data);
   }
 
   /**
