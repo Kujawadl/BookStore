@@ -1,4 +1,4 @@
-<?php if (isset($Order)): ?>
+<?php if (isset($Order)) and count($Order->Items) > 0: ?>
   <table class="table table-condensed table-hover">
   	<tbody>
       <?php foreach ($Order->Items as $Item): ?>
