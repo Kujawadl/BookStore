@@ -24,22 +24,20 @@ class Controller_Cart extends Controller_Template
 
       $Query = Model_Order::query()
                 ->where('customer', '=', $UserId)
-                ->where('date', '=', NULL)
-                ->get();
-      if (count($Query) == 0)
+                ->where('date', '=', NULL);
+      if ($Query->count() == 0)
       {
         // Create a new cart
         $this->Cart = Model_Order::forge();
         $this->Cart->Customer = $UserId;
         $this->Cart->Save();
-      } elseif (count($Query) == 1) {
+      } elseif ($Query->count() == 1) {
         // Get the current cart
-        $this->Cart = $Query;
+        $this->Cart = $Query->get_one();
       } else {
         Session::set_flash('error', 'Your cart could not be found...');
         // @TODO Delete all possible carts and notify user there was an error.
       }
-	echo(var_export($Query));
     }
   }
 
