@@ -1,11 +1,12 @@
 <?php
 if (Auth::check())
 {
+  global $CartQty;
   $Query = Model_Order::query()
             ->where('customer', '=', Auth::get_user_id()[1])
             ->where('date', '=', NULL);
   if ($Query->count() == 1) {
-    global $CartQty = count($Query->get_one()->Items);
+    $CartQty = count($Query->get_one()->Items);
   }
 }
 ?>
