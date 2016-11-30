@@ -9,12 +9,28 @@ class Model_Order extends \Orm\Model
               ->where('order', '=', $this->id)
               ->get();
 
-    foreach ($Items as $Item) {
+    foreach ($Items as $Item)
+    {
       $Book = Model_Book::find($Item->Book);
       $Value += ($Book->Price * $Item->Quantity);
     }
 
     return $Value;
+  }
+
+  public function Quantity()
+  {
+    $Qty = 0;
+    $Items = Model_OrderItem::query()
+              ->where('order', '=', $this->id)
+              ->get();
+
+    foreach ($Items as $Item)
+    {
+      $Qty += $Item->Quantity;
+    }
+
+    return $Qty;
   }
 
   protected static $_properties = array(

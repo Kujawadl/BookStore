@@ -1,3 +1,17 @@
+<?php
+if (Auth::check())
+{
+  global $CartQty;
+  $Query = Model_Order::query()
+            ->where('customer', '=', Auth::get_user_id()[1])
+            ->where('date', '=', NULL);
+  if ($Query->count() == 1)
+  {
+    $CartQty = $Query->get_one()->Quantity();
+  }
+}
+?>
+
 <div id="header">
   <div id="nameplate">
     <h1>Book Store</h1>
@@ -33,7 +47,8 @@
           <li>
             <a href="/cart/view">
               <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;
-              Cart
+              Cart&nbsp;
+              <?php echo((isset($CartQty)) ? '(' . $CartQty . ')' : ''); ?>
             </a>
           </li>
           <?php if (Auth::check() && !Auth::member(0)): ?>
