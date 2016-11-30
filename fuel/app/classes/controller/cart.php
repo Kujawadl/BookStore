@@ -39,6 +39,7 @@ class Controller_Cart extends Controller_Template
         Session::set_flash('error', 'Your cart could not be found...');
         // @TODO Delete all possible carts and notify user there was an error.
       }
+	echo(var_export($Query));
     }
   }
 
@@ -75,11 +76,6 @@ class Controller_Cart extends Controller_Template
    */
   public function action_add($ItemId, $Quantity = 1)
   {
-<<<<<<< HEAD
-    isset($this->Cart) or Response::redirect('/cart/view');
-
-=======
->>>>>>> bed26054dcc103c928a073172c889780766da601
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL or ! isset($this->Cart) or $this->Cart == NULL)
@@ -117,11 +113,6 @@ class Controller_Cart extends Controller_Template
    */
   public function action_update($ItemId, $Quantity = 1)
   {
-<<<<<<< HEAD
-    isset($this->Cart) or Response::redirect('/cart/view');
-
-=======
->>>>>>> bed26054dcc103c928a073172c889780766da601
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL or ! isset($this->Cart) or $this->Cart == NULL)
@@ -160,11 +151,6 @@ class Controller_Cart extends Controller_Template
    */
   public function action_remove($ItemId, $Quantity = NULL)
   {
-<<<<<<< HEAD
-    isset($this->Cart) or Response::redirect('/cart/view');
-
-=======
->>>>>>> bed26054dcc103c928a073172c889780766da601
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL or ! isset($this->Cart) or $this->Cart == NULL)
@@ -200,14 +186,10 @@ class Controller_Cart extends Controller_Template
    */
   public function action_place()
   {
-<<<<<<< HEAD
-    isset($this->Cart) or Response::redirect('/cart/view');
-=======
     if ($Book == NULL or ! isset($this->Cart) or $this->Cart == NULL)
     {
       Response::redirect('/cart/view');
     }
->>>>>>> bed26054dcc103c928a073172c889780766da601
 
     // @TODO: Ask customer for shipping address
 
