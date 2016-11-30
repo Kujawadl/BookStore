@@ -2,7 +2,7 @@
 
 class Controller_Cart extends Controller_Template
 {
-  $Cart = NULL;
+  public $Cart = NULL;
 
   /**
    * Gets the current user's cart, or creates one if none exists.
@@ -16,7 +16,7 @@ class Controller_Cart extends Controller_Template
   {
     global $Cart;
 
-    if (!Auth:check())
+    if (!Auth::check())
     {
       Response::Redirect('/Account/SignIn');
     } else {
