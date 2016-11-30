@@ -1,4 +1,4 @@
-<?php if ($Books): ?>
+<?php if (isset($Books)): ?>
   <table class="table table-condensed table-hover">
   	<tbody>
       <?php foreach ($Books as $Book): ?>

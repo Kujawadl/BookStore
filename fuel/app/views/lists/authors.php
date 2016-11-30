@@ -1,4 +1,4 @@
-<?php if ($Categories): ?>
+<?php if (isset($Authors)): ?>
   <table class="table table-condensed table-hover">
   	<tbody>
       <?php foreach ($Authors as $Author): ?>
