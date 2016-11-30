@@ -5,11 +5,11 @@ class Model_Author extends \Orm\Model
   public function TopCategories()
   {
     return DB::query('
-      SELECT name
+      SELECT Name
       FROM (
         SELECT
-          COUNT(tblcategories.name) AS `count`,
-          tblcategories.name
+          COUNT(tblcategories.Name) AS `count`,
+          tblcategories.Name
         FROM
           tblcategories,
           tblbook_authors,
@@ -20,7 +20,7 @@ class Model_Author extends \Orm\Model
           tblbook_authors.book = tblbook_categories.book
         AND
           tblbook_categories.category = tblcategories.id
-        GROUP BY tblcategories.name
+        GROUP BY tblcategories.Name
         ORDER BY `count` DESC
         LIMIT 5
       ) AS category_counts'
