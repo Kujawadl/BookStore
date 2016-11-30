@@ -13,7 +13,7 @@
                   Known for:
                   <ul>
                     <?php foreach ($Author->TopCategories() as $Category): ?>
-                      <li><?php echo($Category->Name); ?></li>
+                      <li><?php echo($Category['Name']); ?></li>
                     <?php endforeach; ?>
                   </ul>
                 </div>
