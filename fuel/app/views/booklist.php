@@ -12,7 +12,7 @@
                 <h5>$<?php echo($Book->Price); ?></h5>
               </div>
               <div class='col-md-3'>
-                <a class="btn btn-default" href="#" role="button">
+                <a class="btn btn-default" href="/cart/add/<?php echo($Book->id); ?>" role="button">
                   <span class='glyphicon glyphicon-shopping-cart' aria-hidden="true"></span>&nbsp;
                   Add to Cart
                 </a>
