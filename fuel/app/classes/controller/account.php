@@ -24,7 +24,7 @@ class Controller_Account extends Controller_Template
     }
   }
 
-  public function post_signout()
+  public function action_signout()
   {
     if (Auth::check())
     {
