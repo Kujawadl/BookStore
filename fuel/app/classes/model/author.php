@@ -2,6 +2,28 @@
 
 class Model_Author extends \Orm\Model
 {
+  public function TopCategories()
+  {
+    return self::query('
+      SELECT
+        COUNT(tblcategories.name) AS `count`,
+        tblcategories.name
+      FROM
+        tblcategories,
+        tblbook_authors,
+        tblbook_categories
+      WHERE
+        tblbook_authors.author = ' . $this->id . '
+      AND
+        tblbook_authors.book = tblbook_categories.book
+      AND
+        tblbook_categories.category = tblcategories.id
+      GROUP BY tblcategories.name
+      ORDER BY `count` DESC
+      LIMIT 5'
+    )->select('name')->get();
+  }
+
   protected static $_properties = array(
     'id',
     'FName' => array(
@@ -53,7 +75,7 @@ class Model_Author extends \Orm\Model
   // Each author may have many books.
   // Each book may have many authors.
   protected static $_many_many = array(
-    'Author' => array(
+    'Books' => array(
       'key_from'         => 'id',
       'key_through_from' => 'Author',
       'table_through'    => 'book_authors',

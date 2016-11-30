@@ -21,17 +21,34 @@ class Controller_Browse extends Controller_Template
     );
 
     $this->template->title   = 'Browse books';
-    $this->template->content = View::forge('booklist', $data);
+    $this->template->content = View::forge('lists/books', $data);
   }
 
   public function action_authors($PageNum = 1)
   {
-    // @TODO Render the view.
+    $data['Authors'] = Model_Author::find('all',
+      array(
+        'order_by' => array(
+          'lname' => 'asc',
+          'fname' => 'asc'
+        )
+      )
+    );
+
+    $this->template->title   = 'Browse authors';
+    $this->template->content = View::forge('lists/authors', $data);
   }
 
   public function action_categories($PageNum = 1)
   {
-    // @TODO Render the view.
+    $data['Categories'] = Model_Category::find('all',
+      array(
+        'order_by' => array('name' => 'asc')
+      )
+    );
+
+    $this->template->title   = 'Browse categories';
+    $this->template->content = View::forge('lists/categories', $data);
   }
 
   public function action_author($AuthorName = NULL)
