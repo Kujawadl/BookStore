@@ -57,7 +57,7 @@ class Controller_Account extends Controller_Template
       $Customer = Model_Customer::forge();
       $Customer->FName = Input::post('firstname');
       $Customer->LName = Input::post('lastname');
-      $Customer->Contact = $Contact;
+      $Customer->Contact = $Contact->id;
       $Customer->save();
 
       $UserId = Auth::create_user(
