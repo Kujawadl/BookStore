@@ -2,13 +2,36 @@
 
 class Model_Book extends \Orm\Model
 {
+  public function AvgRating()
+  {
+    $Sum = 0;
+    $Num = $this->NumRatings();
+
+    foreach($this->Reviews as $Review)
+    {
+      $Sum += $Review->Rating;
+    }
+
+    if ($Num > 0)
+    {
+      return $Sum / $Num;
+    } else {
+      return 0;
+    }
+  }
+
+  public function NumRatings()
+  {
+    $Num = 0;
+    foreach($this->Reviews as $Review)
+    {
+      $Num++;
+    }
+    return $Num;
+  }
+
   protected static $_properties = array(
     'id',
-    'Authors',
-    'Supplier',
-    'Categories',
-    'Reviews',
-    'Orders',
     'ISBN' => array(
       'data_type'  => 'int',
       'label'      => 'ISBN',
@@ -57,14 +80,14 @@ class Model_Book extends \Orm\Model
   protected static $_has_many = array(
     'Reviews' => array(
       'key_from'       => 'id',
-      'model_to'       => 'Model_Book_Review',
+      'model_to'       => 'Model_BookReview',
       'key_to'         => 'book',
       'cascade_save'   => true,
       'cascade_delete' => true
     ),
     'Orders' => array(
       'key_from'         => 'id',
-      'model_to'         => 'Model_Order_Item',
+      'model_to'         => 'Model_OrderItem',
       'key_to'           => 'book',
       'cascade_save'     => false,
       'cascade_delete'   => false
@@ -125,8 +148,7 @@ class Model_Category extends \Orm\Model
       'label'      => 'Category',
       'validation' => array('required'),
       'form'       => array('type' => 'text')
-    ),
-    'Books'
+    )
   );
 
   // Each book may have many categories.
@@ -161,7 +183,7 @@ class Model_Category extends \Orm\Model
   protected static $_table_name = 'categories';
 }
 
-class Model_Book_Review extends \Orm\Model_Contract
+class Model_BookReview extends \Orm\Model
 {
   protected static $_properties = array(
     'Customer',
@@ -175,7 +197,7 @@ class Model_Book_Review extends \Orm\Model_Contract
         'attributes' => array('min' => '1', 'max' => '5', 'step' => '1')
       )
     ),
-    'Review' = array(
+    'Review' => array(
       'data_type'  => 'varchar',
       'label'      => 'Review',
       'validation' => array(),
@@ -183,9 +205,11 @@ class Model_Book_Review extends \Orm\Model_Contract
     )
   );
 
+  protected static $_primary_key = array('Customer', 'Book');
+
   // Each review is written by one user.
   // Each review is written for one book.
-  protected static $_has_one = array(
+  protected static $_belongs_to = array(
     'Customer' => array(
       'key_from'       => 'customer',
       'model_to'       => 'Model_Customer',

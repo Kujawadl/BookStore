@@ -4,9 +4,7 @@ class Model_Supplier extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
-    'Name',
-    'Reps',
-    'Books'
+    'Name'
   );
 
   // Each supplier may have many representatives.
@@ -49,8 +47,6 @@ class Model_Supplier_Rep extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
-    'Supplier',
-    'Contact',
     'FName',
     'LName'
   );

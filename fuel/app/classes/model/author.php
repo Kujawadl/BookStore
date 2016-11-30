@@ -4,8 +4,6 @@ class Model_Author extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
-    'Contact',
-    'Books',
     'FName' => array(
       'data_type'  => 'varchar',
       'label'      => 'First Name',

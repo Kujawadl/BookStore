@@ -4,7 +4,6 @@ class Model_Customer extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
-    'Contact',
     'FName' => array(
       'data_type'  => 'varchar',
       'label'      => 'First Name',
@@ -30,15 +29,13 @@ class Model_Customer extends \Orm\Model
     )
   );
 
-  // Each author may have many books.
-  // Each book may have many authors.
   protected static $_has_many = array(
-    'Author' => array(
-      'key_from'         => 'id',
-      'model_to'         => 'Model_Order',
-      'key_to'           => 'customer',
-      'cascade_save'     => true,
-      'cascade_delete'   => true
+    'Reviews' => array(
+      'key_from'       => 'id',
+      'model_to'       => 'Model_Book_Review',
+      'key_to'         => 'book',
+      'cascade_save'   => true,
+      'cascade_delete' => true
     )
   );
 
