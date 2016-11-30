@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Cart extends Controller
+class Controller_Cart extends Controller_Template
 {
   $Cart = NULL;
 

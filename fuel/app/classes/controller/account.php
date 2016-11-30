@@ -1,10 +1,10 @@
 <?php
 
-class Controller_Account extends Controller
+class Controller_Account extends Controller_Template
 {
   public function action_index()
   {
-    
+
   }
 
   public function get_signin()

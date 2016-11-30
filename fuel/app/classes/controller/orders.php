@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Orders extends Controller
+class Controller_Orders extends Controller_Template
 {
   /**
    * Ensures user is logged in before trying to view their orders.

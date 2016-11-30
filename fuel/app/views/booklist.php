@@ -5,15 +5,11 @@
         <tr>
           <td>
             <div class='row'>
-              <div class='col-md-9'>
-                <div class='row'>
-                  <div class='col-md-9'>
-                    <h4><?php echo($Book->Title); ?></h4>
-                  </div>
-                  <div class='col-md-3'>
-                    <h5>$<?php echo($Book->Price); ?></h5>
-                  </div>
-                </div>
+              <div class='col-md-6'>
+                <h4><?php echo($Book->Title); ?></h4>
+              </div>
+              <div class='col-md-3'>
+                <h5>$<?php echo($Book->Price); ?></h5>
               </div>
               <div class='col-md-3'>
                 <a class="btn btn-default" href="#" role="button">
