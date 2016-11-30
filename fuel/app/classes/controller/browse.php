@@ -51,23 +51,33 @@ class Controller_Browse extends Controller_Template
     $this->template->content = View::forge('lists/categories', $data);
   }
 
-  public function action_author($AuthorName = NULL)
+  public function action_author($AuthorId = NULL)
   {
-    if ($AuthorName == NULL)
+    if ($AuthorId == NULL)
     {
       Response::Redirect('/Browse/Authors');
     }
 
-    // @TODO Render the view.
+    $Author = Model_Author::find($AuthorId);
+
+    $data['Books'] = $Author->Books;
+
+    $this->template->title   = 'Browse books by ' . $Author->FName . ' ' . $Author->LName;
+    $this->template->content = View::forge('lists/books', $data);
   }
 
-  public function action_category($CategoryName = NULL)
+  public function action_category($CategoryId = NULL)
   {
-    if ($AuthorName == NULL)
+    if ($CategoryId == NULL)
     {
       Response::Redirect('/Browse/Categories');
     }
 
-    // @TODO Render the view.
+    $Category = Model_Category::find($CategoryId);
+
+    $data['Books'] = $Category->Books;
+
+    $this->template->title   = 'Browse ' . $Category->Name . ' books';
+    $this->template->content = View::forge('lists/books', $data);
   }
 }
