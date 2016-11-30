@@ -27,6 +27,17 @@
   <?php echo Asset::js('jquery-3.1.0.js'); ?>
   <?php echo Asset::js('bootstrap.js'); ?>
   <?php echo Asset::js('site.js'); ?>
+
+  <!-- iOS homescreen icon -->
+  <link rel="apple-touch-icon-precomposed" href="<?php echo(Asset::get_file('Book Shelf-96.png', 'img')); ?>">
+
+  <!-- Windows 10 metro tile icon -->
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="<?php echo(Asset::get_file('Book Shelf-96.png', 'img')); ?>">
+
+  <!-- Android homescreen icon -->
+  <link rel="shortcut icon" sizes="96x96" href="<?php echo(Asset::get_file('Book Shelf-96.png', 'img')); ?>">
+
 	<style>
 		body { margin: 40px; }
 	</style>
