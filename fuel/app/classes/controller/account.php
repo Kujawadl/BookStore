@@ -10,7 +10,7 @@ class Controller_Account extends Controller_Template
   public function get_signin()
   {
     $this->template->title = 'Sign In';
-    // @TODO Create signin view.
+    $this->template->content = View::forge('account/signin');
   }
 
   public function post_signin()
@@ -40,7 +40,7 @@ class Controller_Account extends Controller_Template
   public function get_signup()
   {
     $this->template->title = 'Sign Up';
-    // @TODO Create signup view.
+    $this->template->content = View::forge('account/signup');
   }
 
   public function post_signup()
