@@ -24,7 +24,8 @@ class Model_Order extends \Orm\Model
       'validation' => 'required'
     ),
     'Ship_To' => array(
-      'data_type' => 'int'
+      'data_type'  => 'int',
+      'validation' => array()
     ),
     'Date' => array(
       'data_type'  => 'date',
