@@ -15,8 +15,8 @@
               <div class='col-md-3'>
                 <form item='<?php echo($Book->id); ?>'>
                   Qty:
-                  <input type='number' value='<?php $Item->Quantity ?>' />
-                  <button class='btn btn-default' text='Update' type='submit' />
+                  <input type='number' value='<?php echo($Item->Quantity); ?>' />
+                  <button class='btn btn-default' type='submit'>Update</button>
               </div>
             </div>
             <div class='row'>
