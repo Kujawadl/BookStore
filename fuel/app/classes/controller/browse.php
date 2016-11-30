@@ -58,9 +58,11 @@ class Controller_Browse extends Controller_Template
       Response::Redirect('/Browse/Authors');
     }
 
-    $data['Books'] = Model_Author::find($AuthorId)->Books;
+    $Author = Model_Author::find($AuthorId);
 
-    $this->template->title   = 'Browse books';
+    $data['Books'] = $Author->Books;
+
+    $this->template->title   = 'Browse books by ' . $Author->FName . ' ' . $Author->LName;
     $this->template->content = View::forge('lists/books', $data);
   }
 
@@ -71,9 +73,11 @@ class Controller_Browse extends Controller_Template
       Response::Redirect('/Browse/Categories');
     }
 
-    $data['Books'] = Model_Category::find($CategoryId)->Books;
+    $Category = Model_Category::find($CategoryId);
 
-    $this->template->title   = 'Browse books';
+    $data['Books'] = $Category->Books;
+
+    $this->template->title   = 'Browse ' . $Category->Name . ' books';
     $this->template->content = View::forge('lists/books', $data);
   }
 }
