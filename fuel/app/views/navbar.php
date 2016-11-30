@@ -5,8 +5,9 @@ if (Auth::check())
   $Query = Model_Order::query()
             ->where('customer', '=', Auth::get_user_id()[1])
             ->where('date', '=', NULL);
-  if ($Query->count() == 1) {
-    $CartQty = count($Query->get_one()->Items);
+  if ($Query->count() == 1)
+  {
+    $CartQty = $Query->get_one()->Quantity();
   }
 }
 ?>
