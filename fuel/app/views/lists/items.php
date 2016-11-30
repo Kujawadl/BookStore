@@ -13,7 +13,7 @@
                 <h5>$<?php echo($Book->Price); ?></h5>
               </div>
               <div class='col-md-3'>
-                <form item='<?php echo($Book->id); ?>'>
+                <form class='frmUpdateCart' item='<?php echo($Book->id); ?>'>
                   Qty:
                   <input type='number' value='<?php echo($Item->Quantity); ?>' />
                   <button class='btn btn-default btn-sm' type='submit'>Update</button>
