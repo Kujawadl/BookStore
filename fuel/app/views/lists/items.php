@@ -18,7 +18,7 @@
                   <input type='number' value='<?php echo($Item->Quantity); ?>' min='0'/>
                   <button class='btn btn-default btn-sm' type='submit'>Update</button>
                   <a class="btnRemoveFromCart" href='#'>
-                    <span class='glyphicon glyphicon-remove-sign glyphicon-delete' aria-hidden='true'></span>
+                    <span class='glyphicon glyphicon-remove-sign glyphicon-delete' style='font-size: 150em; top: 0.25em;' aria-hidden='true'></span>
                   </a>
               </div>
             </div>
