@@ -21,6 +21,10 @@ class Model_Order extends \Orm\Model
   public function Quantity()
   {
     $Qty = 0;
+    $Items = Model_OrderItem::query()
+              ->where('order', '=', $this->id)
+              ->get();
+
     foreach ($Items as $Item)
     {
       $Qty += $Item->Quantity;
