@@ -29,6 +29,8 @@ class Model_Order extends \Orm\Model
     {
       $Qty += $Item->Quantity;
     }
+
+    return $Qty;
   }
 
   protected static $_properties = array(
