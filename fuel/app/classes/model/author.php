@@ -4,24 +4,29 @@ class Model_Author extends \Orm\Model
 {
   public function TopCategories()
   {
-    return self::query('
-      SELECT
-        COUNT(tblcategories.name) AS `count`,
-        tblcategories.name
-      FROM
-        tblcategories,
-        tblbook_authors,
-        tblbook_categories
-      WHERE
-        tblbook_authors.author = ' . $this->id . '
-      AND
-        tblbook_authors.book = tblbook_categories.book
-      AND
-        tblbook_categories.category = tblcategories.id
-      GROUP BY tblcategories.name
-      ORDER BY `count` DESC
-      LIMIT 5'
-    )->select('name')->get();
+    return DB::query('
+      SELECT name
+      FROM (
+        SELECT
+          COUNT(tblcategories.name) AS `count`,
+          tblcategories.name
+        FROM
+          tblcategories,
+          tblbook_authors,
+          tblbook_categories
+        WHERE
+          tblbook_authors.author = :AuthorID
+        AND
+          tblbook_authors.book = tblbook_categories.book
+        AND
+          tblbook_categories.category = tblcategories.id
+        GROUP BY tblcategories.name
+        ORDER BY `count` DESC
+        LIMIT 5
+      ) AS category_counts'
+    )
+      ->param('AuthorID', intval($this->id))
+      ->execute();
   }
 
   protected static $_properties = array(
