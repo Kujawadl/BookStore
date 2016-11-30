@@ -15,7 +15,7 @@ class Controller_Orders extends Controller
 
   public function action_index()
   {
-    return action_list();
+    return self::action_list();
   }
 
   /**

@@ -4,7 +4,7 @@ class Controller_Browse extends Controller_Template
 {
   public function action_index()
   {
-    return action_books();
+    return self::action_books();
   }
 
   public function action_search($SearchTerm = NULL)

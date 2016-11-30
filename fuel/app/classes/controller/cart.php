@@ -48,7 +48,7 @@ class Controller_Cart extends Controller
    */
   public function action_index()
   {
-    return action_view();
+    return self::action_view();
   }
 
   /**
