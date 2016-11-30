@@ -56,7 +56,9 @@ class Controller_Cart extends Controller_Template
    */
   public function action_view()
   {
-    // @TODO Render the view.
+    $data['Cart'] = $Cart;
+    $this->template->title   = "View Cart";
+    $this->template->content = View::forge('list/cart', $data);
   }
 
   /**
