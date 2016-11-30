@@ -12,8 +12,8 @@
                 <div class='col-md-4'>
                   Known for:
                   <ul>
-                    <?php foreach ($Author->TopCategories() as $CategoryName): ?>
-                      <li><?php echo($CategoryName); ?></li>
+                    <?php foreach ($Author->TopCategories() as $Category): ?>
+                      <li><?php echo($Category['Name']); ?></li>
                     <?php endforeach; ?>
                   </ul>
                 </div>
