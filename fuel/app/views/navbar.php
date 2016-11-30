@@ -34,7 +34,11 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-user"></span>
-                <?php echo Auth::get_profile_fields('firstname', '').' '.Auth::get_profile_fields('lastname', '') ?>
+                <?php
+                  $CustomerId = Auth::get_profile_fields('CustomerId');
+                  $Customer = Model_Customer::find($CustomerId);
+                  echo($Customer->FName . ' ' . $Customer->LName);
+                ?>
                 <spann class="caret"></span>
               </a>
               <ul class="dropdown-menu">
