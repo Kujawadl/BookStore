@@ -74,10 +74,7 @@ class Model_Order extends \Orm\Model
 		'Orm\Observer_UpdatedAt' => array(
 			'events' => array('before_update'),
 			'mysql_timestamp' => false,
-		),
-    'Orm\Observer_Validation' => array(
-      'events' => array('before_save')
-    )
+		)
 	);
 
   protected static $_table_name = 'orders';
