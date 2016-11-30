@@ -87,7 +87,7 @@ class Controller_Cart extends Controller_Template
       if ($Item == NULL)
       {
         $Item = Model_OrderItem::forge();
-        $Item->Order    = $this->Cart->;
+        $Item->Order    = $this->Cart->id;
         $Item->Book     = $Book;
         $Item->Quantity = 0;
       }
