@@ -4,6 +4,7 @@ class Model_Customer extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
+    'Contact',
     'FName' => array(
       'data_type'  => 'varchar',
       'label'      => 'First Name',
@@ -19,7 +20,7 @@ class Model_Customer extends \Orm\Model
   );
 
   // Each author has exactly one contact information record.
-  protected static $_has_one = array(
+  protected static $_belongs_to = array(
     'Contact' => array(
       'key_from'       => 'Contact',
       'model_to'       => 'Model_Contact',
