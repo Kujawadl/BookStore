@@ -2,17 +2,18 @@
   <table class="table table-condensed table-hover">
   	<tbody>
       <?php foreach ($Order->Items as $Item): ?>
+        <?php $Book = Model_Book::find($Item->Book); ?>
         <tr>
           <td>
             <div class='row'>
               <div class='col-md-6'>
-                <pre><?php echo(var_export($Item->Book)); ?></pre>
+                <h4><?php echo($Book->Title); ?></h4>
               </div>
               <div class='col-md-3'>
-<?php /*                <h5>$<?php echo($Item->Book->Price); ?></h5>
+                <h5>$<?php echo($Book->Price); ?></h5>
               </div>
               <div class='col-md-3'>
-                <form item='<?php echo($Item->Book->id); ?>'>
+                <form item='<?php echo($Book->id); ?>'>
                   Qty:
                   <input type='number' value='<?php ?>' />
                   <button class='btn btn-default' text='Update' type='submit' />
@@ -24,7 +25,7 @@
                   <div class='col-md-3'>
                     Author(s):
                     <ul>
-                      <?php foreach($Item->Book->Authors as $Author): ?>
+                      <?php foreach($Book->Authors as $Author): ?>
                         <li>
                           <?php echo($Author->FName . ' ' . $Author->LName) ?>
                         </li>
@@ -34,7 +35,7 @@
                   <div class='col-md-3'>
                     Categories:
                     <ul>
-                      <?php foreach($Item->Book->Categories as $Category): ?>
+                      <?php foreach($Book->Categories as $Category): ?>
                         <li>
                           <?php echo($Category->Name); ?>
                         </li>
@@ -42,9 +43,9 @@
                     </ul>
                   </div>
                   <div class='col-md-3'>
-                    ISBN: <?php echo($Item->Book->ISBN); ?>
+                    ISBN: <?php echo($Book->ISBN); ?>
                     <br />
-                    Published: <?php echo($Item->Book->PubDate); ?>
+                    Published: <?php echo($Book->PubDate); ?>
                   </div>
                   <div class='col-md-3'>
                     Average Review:
@@ -52,7 +53,7 @@
                     <?php
                       for ($i = 0; $i < 5; $i++)
                       {
-                        if ($i < $Item->Book->AvgRating())
+                        if ($i < $Book->AvgRating())
                         {
                           echo('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>');
                         } else {
@@ -61,7 +62,7 @@
                       }
                     ?>
                     <br/>
-                    <small>Based on <?php echo($Item->Book->NumRatings()); ?> ratings</small>
+                    <small>Based on <?php echo($Book->NumRatings()); ?> ratings</small>
                   </div>
                 </div>
               </div>
@@ -75,9 +76,9 @@
         <td>
           <div class='row'>
             <div class='col=md-12 align-right'>
-              Total: <?php echo($Order-Value()); ?>
+              Total: <?php echo($Order->Value()); ?>
             </div>
-    */ endforeach;?>      </div>
+          </div>
         </td>
       </tr>
   </table>
