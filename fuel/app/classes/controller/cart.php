@@ -26,15 +26,15 @@ class Controller_Cart extends Controller_Template
                 ->where('customer', '=', $UserId)
                 ->where('date', '=', NULL)
                 ->get();
-      if ($Query->count() == 0)
+      if (count($Query) == 0)
       {
         // Create a new cart
         $Cart = Model_Order::forge();
         $Cart->Customer = $UserId;
         $Cart->Save();
-      } elseif ($Query->count() == 1) {
+      } elseif (count($Query) == 1) {
         // Get the current cart
-        $Cart = $Query->get_one();
+        $Cart = $Query[0];
       } else {
         // @TODO Delete all possible carts and notify user there was an error.
       }
@@ -56,7 +56,9 @@ class Controller_Cart extends Controller_Template
    */
   public function action_view()
   {
-    // @TODO Render the view.
+    $data['Cart'] = $Cart;
+    $this->template->title   = "View Cart";
+    $this->template->content = View::forge('list/cart', $data);
   }
 
   /**
