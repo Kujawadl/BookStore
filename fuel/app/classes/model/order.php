@@ -10,7 +10,7 @@ class Model_Order extends \Orm\Model
               ->get();
 
     foreach ($Items as $Item) {
-      $Book = Model_Book::query($Item->Book);
+      $Book = Model_Book::find($Item->Book);
       $Value += ($Book->Price * $Item->Quantity);
     }
 
