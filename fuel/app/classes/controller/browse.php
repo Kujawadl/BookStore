@@ -7,11 +7,19 @@ class Controller_Browse extends Controller_Template
     return self::action_books();
   }
 
+  /**
+   * Searches for books.
+   *
+   * @param any SearchTerm May be title, author name, book id, category, etc.
+   */
   public function action_search($SearchTerm = NULL)
   {
     // @TODO Render the view.
   }
 
+  /**
+   * Lists all books.
+   */
   public function action_books($PageNum = 1)
   {
     $data['Books'] = Model_Book::find('all',
@@ -24,6 +32,9 @@ class Controller_Browse extends Controller_Template
     $this->template->content = View::forge('lists/books', $data);
   }
 
+  /**
+   * Lists all authors.
+   */
   public function action_authors($PageNum = 1)
   {
     $data['Authors'] = Model_Author::find('all',
@@ -39,6 +50,9 @@ class Controller_Browse extends Controller_Template
     $this->template->content = View::forge('lists/authors', $data);
   }
 
+  /**
+   * Lists all categories.
+   */
   public function action_categories($PageNum = 1)
   {
     $data['Categories'] = Model_Category::find('all',
@@ -51,6 +65,9 @@ class Controller_Browse extends Controller_Template
     $this->template->content = View::forge('lists/categories', $data);
   }
 
+  /**
+   * Lists all books by the given author.
+   */
   public function action_author($AuthorId = NULL)
   {
     if ($AuthorId == NULL)
@@ -66,6 +83,9 @@ class Controller_Browse extends Controller_Template
     $this->template->content = View::forge('lists/books', $data);
   }
 
+  /**
+   * Lists all books in the given category.
+   */
   public function action_category($CategoryId = NULL)
   {
     if ($CategoryId == NULL)
