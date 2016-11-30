@@ -5,7 +5,7 @@ class Model_Author extends \Orm\Model
   public function TopCategories()
   {
     return DB::query('
-      SELECT name FROM
+      SELECT name
       FROM (
         SELECT
           COUNT(tblcategories.name) AS `count`,
@@ -26,8 +26,7 @@ class Model_Author extends \Orm\Model
       ) AS category_counts'
     )
       ->param('AuthorID', intval($this->id))
-      ->execute()
-      ->as_array();
+      ->execute();
   }
 
   protected static $_properties = array(
