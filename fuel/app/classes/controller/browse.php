@@ -66,7 +66,7 @@ class Controller_Browse extends Controller_Template
 
   public function action_category($CategoryId = NULL)
   {
-    if ($AuthorName == NULL)
+    if ($CategoryId == NULL)
     {
       Response::Redirect('/Browse/Categories');
     }
