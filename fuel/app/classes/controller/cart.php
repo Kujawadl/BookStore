@@ -116,6 +116,7 @@ class Controller_Cart extends Controller_Template
 
     if ($Book == NULL or ! isset($this->Cart) or $this->Cart == NULL)
     {
+      Session::set_flash('Could not find your cart...');
       // @TODO: Item not found, throw error
     } else {
       $Item = Model_OrderItem::query()
