@@ -30,7 +30,7 @@ class Model_Contact extends \Orm\Model
       'key_to'         => 'id',
       'cascade_save'   => true,
       'cascade_delete' => true
-    );
+    )
   );
 
   protected static $_observers = array(
