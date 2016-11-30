@@ -75,8 +75,10 @@
       <tr>
         <td>
           <div class='row'>
-            <div class='col=md-12 align-right'>
-              Total: <?php echo($Order->Value()); ?>
+            <div class='col=md-12 text-right'>
+              <strong>
+                Total: $<?php echo($Order->Value()); ?>
+              </strong>
             </div>
           </div>
         </td>
