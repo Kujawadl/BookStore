@@ -6,12 +6,12 @@ class Model_Order extends \Orm\Model
   {
     $Value = 0.0;
     $Items = Model_OrderItem::query()
-              ->related('book')
               ->where('order', '=', $this->id)
               ->get();
 
     foreach ($Items as $Item) {
-      $Value += ($Item->Book->Price * $Item->Quantity);
+      $Book = Model_Book::find($Item->Book);
+      $Value += ($Book->Price * $Item->Quantity);
     }
 
     return $Value;
@@ -19,10 +19,16 @@ class Model_Order extends \Orm\Model
 
   protected static $_properties = array(
     'id',
+    'Customer' => array(
+      'data_type'  => 'int',
+      'validation' => 'required'
+    ),
+    'Ship_To' => array(
+      'data_type'  => 'int'
+    ),
     'Date' => array(
       'data_type'  => 'date',
       'label'      => 'Order Date',
-      'validation' => array('required', 'valid_date'),
       'form'       => array(
         'type'       => 'text',
         'attributes' => array('class' => 'datepicker')
@@ -32,7 +38,7 @@ class Model_Order extends \Orm\Model
 
   // Each order is for exactly one customer.
   // Each order ships to exactly one address.
-  protected static $_has_one = array(
+  protected static $_belongs_to = array(
     'Customer' => array(
       'key_from'       => 'customer',
       'model_to'       => 'Model_Customer',
@@ -68,10 +74,7 @@ class Model_Order extends \Orm\Model
 		'Orm\Observer_UpdatedAt' => array(
 			'events' => array('before_update'),
 			'mysql_timestamp' => false,
-		),
-    'Orm\Observer_Validation' => array(
-      'events' => array('before_save')
-    )
+		)
 	);
 
   protected static $_table_name = 'orders';
