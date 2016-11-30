@@ -93,9 +93,10 @@ class Controller_Cart extends Controller_Template
       }
       $Item->Quantity += $Quantity;
       $Item->save();
-    }
 
-    // @TODO Redirect to previous page.
+      Session::set_flash('success', $Book->Title . ' added to cart successfully!');
+      Response::redirect(Input::referrer());
+    }
   }
 
   /**
@@ -129,9 +130,10 @@ class Controller_Cart extends Controller_Template
       }
       $Item->Quantity = $Quantity;
       $Item->save();
-    }
 
-    // @TODO Redirect to previous page.
+      Session::set_flash('success', 'Cart updated successfully!');
+      Response::redirect(Input::referrer());
+    }
   }
 
   /**
@@ -169,9 +171,10 @@ class Controller_Cart extends Controller_Template
           $Item->delete();
         }
       }
-    }
 
-    // @TODO Redirect to previous page.
+      Session::set_flash('success', $Book->Title . ' removed from cart successfully!');
+      Response::redirect(Input::referrer());
+    }
   }
 
   /**
