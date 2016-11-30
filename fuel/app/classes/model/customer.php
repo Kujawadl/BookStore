@@ -32,7 +32,7 @@ class Model_Customer extends \Orm\Model
   protected static $_has_many = array(
     'Reviews' => array(
       'key_from'       => 'id',
-      'model_to'       => 'Model_Book_Review',
+      'model_to'       => 'Model_BookReview',
       'key_to'         => 'book',
       'cascade_save'   => true,
       'cascade_delete' => true
