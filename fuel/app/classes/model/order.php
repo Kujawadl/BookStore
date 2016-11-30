@@ -24,13 +24,11 @@ class Model_Order extends \Orm\Model
       'validation' => 'required'
     ),
     'Ship_To' => array(
-      'data_type'  => 'int',
-      'validation' => array()
+      'data_type'  => 'int'
     ),
     'Date' => array(
       'data_type'  => 'date',
       'label'      => 'Order Date',
-      'validation' => array(),
       'form'       => array(
         'type'       => 'text',
         'attributes' => array('class' => 'datepicker')
