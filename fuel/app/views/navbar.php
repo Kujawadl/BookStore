@@ -43,7 +43,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="/user/signout">
+                  <a href="/account/signout">
                     <span class="glyphicon glyphicon-log-out"></span> Logout
                   </a>
                 </li>
