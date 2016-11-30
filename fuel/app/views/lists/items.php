@@ -7,16 +7,19 @@
           <td>
             <div class='row'>
               <div class='col-md-6'>
-                <h4><?php echo($Book->Title); ?></h4>
+                <h4 class='bookTitle'><?php echo($Book->Title); ?></h4>
               </div>
               <div class='col-md-3'>
-                <h5>$<?php echo($Book->Price); ?></h5>
+                <h5 class='bookPrice'>$<?php echo($Book->Price); ?></h5>
               </div>
               <div class='col-md-3'>
                 <form class='frmUpdateCart' item='<?php echo($Book->id); ?>'>
                   Qty:
-                  <input type='number' value='<?php echo($Item->Quantity); ?>' />
+                  <input type='number' value='<?php echo($Item->Quantity); ?>' min='0'/>
                   <button class='btn btn-default btn-sm' type='submit'>Update</button>
+                  <a class="btnRemoveFromCart" href='#'>
+                    <span class='glyphicon glyphicon-remove-sign glyphicon-delete' aria-hidden='true'></span>
+                  </a>
               </div>
             </div>
             <div class='row'>
@@ -26,7 +29,7 @@
                     Author(s):
                     <ul>
                       <?php foreach($Book->Authors as $Author): ?>
-                        <li>
+                        <li class='bookAuthor'>
                           <?php echo($Author->FName . ' ' . $Author->LName) ?>
                         </li>
                       <?php endforeach; ?>
@@ -36,7 +39,7 @@
                     Categories:
                     <ul>
                       <?php foreach($Book->Categories as $Category): ?>
-                        <li>
+                        <li class='bookCategory'>
                           <?php echo($Category->Name); ?>
                         </li>
                       <?php endforeach; ?>

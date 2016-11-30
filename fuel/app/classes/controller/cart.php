@@ -129,8 +129,14 @@ class Controller_Cart extends Controller_Template
         $Item->Order = $this->Cart;
         $Item->Book  = $Book;
       }
-      $Item->Quantity = $Quantity;
-      $Item->save();
+
+      if ($Quantity <= 0)
+      {
+          $Item->delete();
+      } else {
+        $Item->Quantity = $Quantity;
+        $Item->save();
+      }
 
       Session::set_flash('success', 'Cart updated successfully!');
       Response::redirect(Input::referrer());
