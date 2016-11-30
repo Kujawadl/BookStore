@@ -6,10 +6,10 @@
           <td>
             <div class='row'>
               <div class='col-md-6'>
-                <h4><?php echo($Item->Book->Title); ?></h4>
+                <pre><?php echo(var_export($Item->Book)); ?></pre>
               </div>
               <div class='col-md-3'>
-                <h5>$<?php echo($Item->Book->Price); ?></h5>
+<?php /*                <h5>$<?php echo($Item->Book->Price); ?></h5>
               </div>
               <div class='col-md-3'>
                 <form item='<?php echo($Item->Book->id); ?>'>
@@ -77,7 +77,7 @@
             <div class='col=md-12 align-right'>
               Total: <?php echo($Order-Value()); ?>
             </div>
-          </div>
+    */ endforeach;?>      </div>
         </td>
       </tr>
   </table>
