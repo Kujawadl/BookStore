@@ -81,6 +81,7 @@
           </div>
         </td>
       </tr>
+    </tfoot>
   </table>
 <?php else: ?>
   <p>No items.</p>
