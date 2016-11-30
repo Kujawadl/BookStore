@@ -56,7 +56,7 @@ class Controller_Cart extends Controller_Template
    */
   public function action_view()
   {
-    $data['Cart'] = $this->Cart;
+    $data['Order'] = $this->Cart;
     $this->template->title   = "View Cart";
     $this->template->content = View::forge('lists/items', $data);
   }
