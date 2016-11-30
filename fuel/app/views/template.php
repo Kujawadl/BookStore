@@ -17,7 +17,6 @@
 	<div class="container">
 		<div class="col-md-12">
 			<h1><?php echo $title; ?></h1>
-			<hr>
 <?php if (Session::get_flash('success')): ?>
 			<div class="alert alert-success">
 				<strong>Success</strong>
@@ -39,11 +38,13 @@
       <?php echo $content; ?>
 		</div>
 		<footer>
+      <div class="col-md-12">
       <hr />
-			<p>
-				Proudly powered by <a href="http://fuelphp.com">FuelPHP</a>, <a href="http://jquery.com/">jQuery</a>, and <a href="http://getbootstrap.com/">Bootstrap</a>.<br>
-        <small>Licensed under <a href="/index/license"><span class='glyphicon glyphicon-globe'></span> GPL-3.0</a></small>
-			</p>
+  			<p>
+  				Proudly powered by <a href="http://fuelphp.com">FuelPHP</a>, <a href="http://jquery.com/">jQuery</a>, and <a href="http://getbootstrap.com/">Bootstrap</a>.<br>
+          <small>Licensed under <a href="/index/license"><span class='glyphicon glyphicon-globe'></span> GPL-3.0</a></small>
+  			</p>
+      </div>
 		</footer>
 	</div>
 </body>
