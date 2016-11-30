@@ -30,6 +30,12 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/cart/view">
+              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;
+              Cart
+            </a>
+          </li>
           <?php if (Auth::check() && !Auth::member(0)): ?>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">
