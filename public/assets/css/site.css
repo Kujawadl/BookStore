@@ -1,3 +1,6 @@
+/**
+ * Navbar styling
+ */
 div#header {
   width: 100%;
   color: black;
@@ -22,3 +25,13 @@ div#nameplate h1 {
     padding: 14px 14px 0;
     overflow:hidden;
 }
+
+/**
+ * Text and glyphicon colors
+ */
+.glyphicon-delete, .glyphicon-error, .red {color: red;}
+.glyphicon-warning, .orange {color: orange;}
+.yellow {color: yellow;}
+.glyphicon-success, .green {color: green;}
+.glyphicon-info, .blue {color: blue;}
+.purple, .violet {color: violet;}
