@@ -30,7 +30,7 @@ class Model_Order extends \Orm\Model
     'Date' => array(
       'data_type'  => 'date',
       'label'      => 'Order Date',
-      'validation' => array('valid_date'),
+      'validation' => array(),
       'form'       => array(
         'type'       => 'text',
         'attributes' => array('class' => 'datepicker')
