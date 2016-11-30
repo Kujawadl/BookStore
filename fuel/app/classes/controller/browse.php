@@ -58,7 +58,7 @@ class Controller_Browse extends Controller_Template
       Response::Redirect('/Browse/Authors');
     }
 
-    $data['Books'] = Model_Author::find($AuthorId)->get()->Books;
+    $data['Books'] = Model_Author::find($AuthorId)->Books;
 
     $this->template->title   = 'Browse books';
     $this->template->content = View::forge('lists/books', $data);
@@ -71,7 +71,7 @@ class Controller_Browse extends Controller_Template
       Response::Redirect('/Browse/Categories');
     }
 
-    $data['Books'] = Model_Category::find($CategoryId)->get()->Books;
+    $data['Books'] = Model_Category::find($CategoryId)->Books;
 
     $this->template->title   = 'Browse books';
     $this->template->content = View::forge('lists/books', $data);
