@@ -36,7 +36,8 @@ class Controller_Cart extends Controller_Template
         // Get the current cart
         $this->Cart = $Query;
       } else {
-        Session::set_flash('error', 'Your cart could not be found...')
+        Session::set_flash('error', 'Your cart could not be found...');
+        Response::redirect('/cart/view');
         // @TODO Delete all possible carts and notify user there was an error.
       }
     }
