@@ -2,7 +2,7 @@
 
 class Controller_Cart extends Controller_Template
 {
-  public $Cart = NULL;
+  public $Cart;
 
   /**
    * Gets the current user's cart, or creates one if none exists.
@@ -37,7 +37,10 @@ class Controller_Cart extends Controller_Template
         $this->Cart = $Query;
       } else {
         Session::set_flash('error', 'Your cart could not be found...');
+<<<<<<< HEAD
         Response::redirect('/cart/view');
+=======
+>>>>>>> e108188efa01f2eb24f2ddcc9c92cad7c8aaf3be
         // @TODO Delete all possible carts and notify user there was an error.
       }
     }
@@ -76,6 +79,11 @@ class Controller_Cart extends Controller_Template
    */
   public function action_add($ItemId, $Quantity = 1)
   {
+<<<<<<< HEAD
+=======
+    isset($this->Cart) or Response::redirect('/cart/view');
+
+>>>>>>> e108188efa01f2eb24f2ddcc9c92cad7c8aaf3be
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL)
@@ -113,6 +121,11 @@ class Controller_Cart extends Controller_Template
    */
   public function action_update($ItemId, $Quantity = 1)
   {
+<<<<<<< HEAD
+=======
+    isset($this->Cart) or Response::redirect('/cart/view');
+
+>>>>>>> e108188efa01f2eb24f2ddcc9c92cad7c8aaf3be
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL)
@@ -151,6 +164,11 @@ class Controller_Cart extends Controller_Template
    */
   public function action_remove($ItemId, $Quantity = NULL)
   {
+<<<<<<< HEAD
+=======
+    isset($this->Cart) or Response::redirect('/cart/view');
+
+>>>>>>> e108188efa01f2eb24f2ddcc9c92cad7c8aaf3be
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL)
@@ -186,6 +204,8 @@ class Controller_Cart extends Controller_Template
    */
   public function action_place()
   {
+    isset($this->Cart) or Response::redirect('/cart/view');
+
     // @TODO: Ask customer for shipping address
 
     // Using a SQL query, we can use the MySQL NOW() function, which ensures
