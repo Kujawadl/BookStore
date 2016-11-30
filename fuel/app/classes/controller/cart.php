@@ -14,7 +14,7 @@ class Controller_Cart extends Controller_Template
    */
   public function before()
   {
-    global $Cart;
+    parent::before();
 
     if (!Auth::check())
     {
@@ -29,12 +29,12 @@ class Controller_Cart extends Controller_Template
       if (count($Query) == 0)
       {
         // Create a new cart
-        $Cart = Model_Order::forge();
-        $Cart->Customer = $UserId;
-        $Cart->Save();
+        $this->Cart = Model_Order::forge();
+        $this->Cart->Customer = $UserId;
+        $this->Cart->Save();
       } elseif (count($Query) == 1) {
         // Get the current cart
-        $Cart = $Query[0];
+        $this->Cart = $Query;
       } else {
         // @TODO Delete all possible carts and notify user there was an error.
       }
@@ -56,9 +56,9 @@ class Controller_Cart extends Controller_Template
    */
   public function action_view()
   {
-    $data['Cart'] = $Cart;
+    $data['Cart'] = $this->Cart;
     $this->template->title   = "View Cart";
-    $this->template->content = View::forge('list/cart', $data);
+    $this->template->content = View::forge('lists/items', $data);
   }
 
   /**
@@ -74,7 +74,6 @@ class Controller_Cart extends Controller_Template
    */
   public function action_add($ItemId, $Quantity = 1)
   {
-    global $Cart;
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL)
@@ -83,12 +82,12 @@ class Controller_Cart extends Controller_Template
     } else {
       $Item = Model_OrderItem::query()
                ->where('book', '=', $Book->id)
-               ->where('order', '=', $Cart->id)
+               ->where('order', '=', $this->Cart->id)
                ->get_one();
       if ($Item == NULL)
       {
         $Item = Model_OrderItem::forge();
-        $Item->Order    = $Cart;
+        $Item->Order    = $this->Cart;
         $Item->Book     = $Book;
         $Item->Quantity = 0;
       }
@@ -112,7 +111,6 @@ class Controller_Cart extends Controller_Template
    */
   public function action_update($ItemId, $Quantity = 1)
   {
-    global $Cart;
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL)
@@ -121,12 +119,12 @@ class Controller_Cart extends Controller_Template
     } else {
       $Item = Model_OrderItem::query()
                ->where('book', '=', $Book->id)
-               ->where('order', '=', $Cart->id)
+               ->where('order', '=', $this->Cart->id)
                ->get_one();
       if ($Item == NULL)
       {
         $Item = Model_OrderItem::forge();
-        $Item->Order = $Cart;
+        $Item->Order = $this->Cart;
         $Item->Book  = $Book;
       }
       $Item->Quantity = $Quantity;
@@ -151,7 +149,6 @@ class Controller_Cart extends Controller_Template
    */
   public function action_remove($ItemId, $Quantity = NULL)
   {
-    global $Cart;
     $Book = Model_Book::find($ItemId);
 
     if ($Book == NULL)
@@ -160,7 +157,7 @@ class Controller_Cart extends Controller_Template
     } else {
       $Item = Model_OrderItem::query()
                ->where('book', '=', $Book->id)
-               ->where('order', '=', $Cart->id)
+               ->where('order', '=', $this->Cart->id)
                ->get_one();
       if ($Item != NULL)
       {
