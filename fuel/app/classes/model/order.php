@@ -19,10 +19,17 @@ class Model_Order extends \Orm\Model
 
   protected static $_properties = array(
     'id',
+    'Customer' => array(
+      'data_type'  => 'int',
+      'validation' => 'required'
+    ),
+    'Ship_To' => array(
+      'data_type' => 'int'
+    ),
     'Date' => array(
       'data_type'  => 'date',
       'label'      => 'Order Date',
-      'validation' => array('required', 'valid_date'),
+      'validation' => array('valid_date'),
       'form'       => array(
         'type'       => 'text',
         'attributes' => array('class' => 'datepicker')
@@ -32,7 +39,7 @@ class Model_Order extends \Orm\Model
 
   // Each order is for exactly one customer.
   // Each order ships to exactly one address.
-  protected static $_has_one = array(
+  protected static $_belongs_to = array(
     'Customer' => array(
       'key_from'       => 'customer',
       'model_to'       => 'Model_Customer',
