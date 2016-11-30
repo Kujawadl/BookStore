@@ -6,7 +6,7 @@ class Model_Order extends \Orm\Model
   {
     $Value = 0.0;
     $Items = Model_OrderItem::query()
-              ->related('Items')
+              ->related('Book')
               ->where('order', '=', $this->id)
               ->get();
 
