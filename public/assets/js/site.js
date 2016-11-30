@@ -10,6 +10,6 @@ $(document).ready(function() {
   $(".frmUpdateCart").submit(function() {
     id = $(this).attr('item');
     qty = $(this).children('input').val();
-    $(this).attr('action', '/cart/update/' + item + '/' + qty);
+    $(this).attr('action', '/cart/update/' + id + '/' + qty);
   });
 });
