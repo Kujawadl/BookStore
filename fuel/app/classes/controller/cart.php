@@ -88,7 +88,7 @@ class Controller_Cart extends Controller_Template
       {
         $Item = Model_OrderItem::forge();
         $Item->Order    = $this->Cart->id;
-        $Item->Book     = $Book;
+        $Item->Book     = $Book->id;
         $Item->Quantity = 0;
       }
       $Item->Quantity += $Quantity;
