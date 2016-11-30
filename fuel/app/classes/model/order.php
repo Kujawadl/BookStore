@@ -6,12 +6,12 @@ class Model_Order extends \Orm\Model
   {
     $Value = 0.0;
     $Items = Model_OrderItem::query()
-              ->related('Book')
               ->where('order', '=', $this->id)
               ->get();
 
     foreach ($Items as $Item) {
-      $Value += ($Item->Book->Price * $Item->Quantity);
+      $Book = Model_Book::query($Item->Book)
+      $Value += ($Book->Price * $Item->Quantity);
     }
 
     return $Value;
