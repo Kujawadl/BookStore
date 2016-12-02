@@ -36,7 +36,7 @@ class Controller_Orders extends Controller_Template
 
     $Query = Model_Order::query()
               ->where('id', '=', $OrderId)
-              ->where('date', '<>', NULL)
+              ->where('date', 'IS NOT', NULL)
               ->where('customer', '=', $UserId);
     if ($Query->count() == 1) {
       // Get the current cart
