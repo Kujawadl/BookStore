@@ -48,7 +48,7 @@
   <?php echo render('navbar'); ?>
 	<div class="container">
 		<div class="col-md-12">
-			<h1><?php echo $title; ?></h1>
+			<h1><?php echo $title . (isset($subtitle) ? "<br/><small>$subtitle</small>" : '');?></h1>
       <?php echo View::forge('flash'); ?>
 		</div>
 		<div class="col-md-12">
