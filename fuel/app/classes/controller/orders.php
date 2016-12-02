@@ -42,8 +42,12 @@ class Controller_Orders extends Controller_Template
       // Get the current cart
       $data['Order'] = $Query->get_one();
       $this->template->title    = "Order #$OrderId";
-      $this->template->subtitle = $Query->Date;
-      $this->template->content  = View::forge('lists/items', $data);
+
+      $data['Language'] = 'php';
+      $data['Code'] = var_export($data['Order']);
+      $this->template->content  = View::forge('debug/codesnippet', $data);
+      //$this->template->subtitle = $Query->Date;
+      //$this->template->content  = View::forge('lists/items', $data);
     } else {
       Session::set_flash('error', 'Order #' . $OrderId . ' not found...');
       $this->template->content = '';
