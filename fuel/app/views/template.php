@@ -23,11 +23,13 @@
 	<?php echo Asset::css('bootstrap.css'); ?>
   <?php echo Asset::css('bootstrap-theme.css'); ?>
   <?php echo Asset::css('sweetalert.css'); ?>
+  <?php echo Asset::css('highlighter.css'); ?>
   <?php echo Asset::css('site.css'); ?>
 
   <?php echo Asset::js('jquery-3.1.0.js'); ?>
   <?php echo Asset::js('bootstrap.js'); ?>
   <?php echo Asset::js('sweetalert.min.js'); ?>
+  <?php echo Asset::js('highlighter.js'); ?>
   <?php echo Asset::js('site.js'); ?>
 
   <!-- iOS homescreen icon -->
