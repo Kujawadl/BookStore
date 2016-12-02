@@ -7,6 +7,7 @@ class Controller_Orders extends Controller_Template
    */
   public function before()
   {
+    parent::before();
     if (!Auth::check())
     {
       Response::redirect('/Account/SignIn');
@@ -28,9 +29,25 @@ class Controller_Orders extends Controller_Template
     if ($OrderId == NULL)
     {
       Response::redirect('/Orders/List');
-    }
+    } else {
 
-    // @TODO Render the view.
+    }
+    $UserId = Auth::get_user_id()[1];
+
+    $Query = Model_Order::query()
+              ->where('id', '=', $OrderId)
+              ->where('date', 'IS NOT', NULL)
+              ->where('customer', '=', $UserId);
+    if ($Query->count() == 1) {
+      // Get the current cart
+      $data['Order'] = $Query->get_one();
+      $this->template->title    = "Order #$OrderId";
+      $this->template->subtitle = $Query->Date;
+      $this->template->content  = View::forge('lists/items', $data);
+    } else {
+      Session::set_flash('error', 'Order #' . $OrderId . ' not found...');
+      $this->template->content = '';
+    }
   }
 
   /**

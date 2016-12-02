@@ -78,10 +78,9 @@
       <tr>
         <td>
           <div class='row'>
-            <div class='col=md-12 text-right'>
-              <strong>
-                Total: $<?php echo($Order->Value()); ?>
-              </strong>
+            <div class='col-md-9'></div>
+            <div class='col-md-3'>
+              <h2>Total: $<?php echo($Order->Value()); ?></h2>
             </div>
           </div>
         </td>
