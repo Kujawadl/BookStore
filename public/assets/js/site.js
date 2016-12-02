@@ -47,7 +47,7 @@ $(document).ready(function() {
         new Blob(
           [
             "onmessage = function(event) { \
-              importScripts('/public/assets/js/highlighter.js'); \
+              importScripts('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js'); \
               var result = self.hljs.highlightAuto(event.data); \
               postMessage(result.value); \
             }"
