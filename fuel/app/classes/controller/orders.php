@@ -40,14 +40,12 @@ class Controller_Orders extends Controller_Template
               ->where('customer', '=', $UserId);
     if ($Query->count() == 1) {
       // Get the current cart
-      $data['Order'] = $Query->get_one();
-      $this->template->title    = "Order #$OrderId";
+      $Order = $Query->get_one();
+      $data['Order'] = $Order;
 
-      $data['Code'] = $data['Order'];
-      $data['Language'] = 'php';
-      $this->template->content = View::forge('debug/codesnippet', $data);
-      //$this->template->subtitle = $Query->Date;
-      //$this->template->content  = View::forge('lists/items', $data);
+      $this->template->title    = "Order #$OrderId";
+      $this->template->subtitle = $Order->Date;
+      $this->template->content  = View::forge('lists/items', $data);
     } else {
       Session::set_flash('error', 'Order #' . $OrderId . ' not found...');
       $this->template->content = '';
