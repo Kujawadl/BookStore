@@ -46,7 +46,7 @@ class Controller_Orders extends Controller_Template
       $this->template->content  = View::forge('lists/items', $data);
     } else {
       Session::set_flash('error', 'Order #' . $OrderId . ' not found...');
-      $this->content = '';
+      $this->template->content = '';
     }
   }
 
