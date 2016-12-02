@@ -44,7 +44,7 @@ class Controller_Orders extends Controller_Template
       $this->template->title    = "Order #$OrderId";
 
       $data['Language'] = 'php';
-      $data['Code'] = var_export($data['Order']);
+      $data['Code'] = var_dump($data['Order']);
       $this->template->content  = View::forge('debug/codesnippet', $data);
       //$this->template->subtitle = $Query->Date;
       //$this->template->content  = View::forge('lists/items', $data);
