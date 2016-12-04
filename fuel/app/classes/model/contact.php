@@ -13,21 +13,21 @@ class Model_Contact extends \Orm\Model
     'Phones' => array(
       'key_from'       => 'id',
       'model_to'       => 'Model_Contact_Phone',
-      'key_to'         => 'id',
+      'key_to'         => 'contact',
       'cascade_save'   => true,
       'cascade_delete' => true
     ),
     'Emails' => array(
       'key_from'       => 'id',
       'model_to'       => 'Model_Contact_Email',
-      'key_to'         => 'id',
+      'key_to'         => 'contact',
       'cascade_save'   => true,
       'cascade_delete' => true
     ),
     'Addresses' => array(
       'key_from'       => 'id',
       'model_to'       => 'Model_Contact_Address',
-      'key_to'         => 'id',
+      'key_to'         => 'contact',
       'cascade_save'   => true,
       'cascade_delete' => true
     )
