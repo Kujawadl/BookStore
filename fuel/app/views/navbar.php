@@ -64,6 +64,16 @@ if (Auth::check())
               </a>
               <ul class="dropdown-menu">
                 <li>
+                  <a href="/orders/list">
+                    <span class="glyphicon glyphicon-time"></span> Order History
+                  </a>
+                </li>
+                <li>
+                  <a href="/account/settings">
+                    <span class="glyphicon glyphicon-cog"></span> Settings
+                  </a>
+                </li>
+                <li>
                   <a href="/account/signout">
                     <span class="glyphicon glyphicon-log-out"></span> Logout
                   </a>
