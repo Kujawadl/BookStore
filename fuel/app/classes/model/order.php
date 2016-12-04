@@ -2,37 +2,6 @@
 
 class Model_Order extends \Orm\Model
 {
-  public function Value()
-  {
-    $Value = 0.0;
-    $Items = Model_OrderItem::query()
-              ->where('order', '=', $this->id)
-              ->get();
-
-    foreach ($Items as $Item)
-    {
-      $Book = Model_Book::find($Item->Book);
-      $Value += ($Book->Price * $Item->Quantity);
-    }
-
-    return $Value;
-  }
-
-  public function Quantity()
-  {
-    $Qty = 0;
-    $Items = Model_OrderItem::query()
-              ->where('order', '=', $this->id)
-              ->get();
-
-    foreach ($Items as $Item)
-    {
-      $Qty += $Item->Quantity;
-    }
-
-    return $Qty;
-  }
-
   protected static $_properties = array(
     'id',
     'Customer' => array(
@@ -94,4 +63,50 @@ class Model_Order extends \Orm\Model
 	);
 
   protected static $_table_name = 'orders';
+
+  public function Value()
+  {
+    $Value = 0.0;
+    $Items = Model_OrderItem::query()
+              ->where('order', '=', $this->id)
+              ->get();
+
+    foreach ($Items as $Item)
+    {
+      $Book = Model_Book::find($Item->Book);
+      $Value += ($Book->Price * $Item->Quantity);
+    }
+
+    return $Value;
+  }
+
+  public function Quantity()
+  {
+    $Qty = 0;
+    $Items = Model_OrderItem::query()
+              ->where('order', '=', $this->id)
+              ->get();
+
+    foreach ($Items as $Item)
+    {
+      $Qty += $Item->Quantity;
+    }
+
+    return $Qty;
+  }
+
+  public function Address()
+  {
+    $Address = Model_Contact_Address::query()
+                ->where('id', '=', $this->Ship_To)
+                ->get();
+
+    $CustomerId = Auth::get_profile_fields('CustomerId');
+    $Customer = Model_Customer::find($CustomerId);
+
+    return
+      $Customer->FName . ' ' . $Customer->LName . "\n" .
+      $Address->Street . "\n" .
+      $Address->City . ", " . $Address->State . " " . $Address->Zip;
+  }
 }
