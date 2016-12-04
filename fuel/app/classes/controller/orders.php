@@ -59,10 +59,14 @@ class Controller_Orders extends Controller_Template
    */
   public function action_list($PageNum = 1)
   {
-    $Orders = Model_Order::query()
-               ->where('customer', '=', Auth::get_user_id()[1])
-               ->get();
+    $UserId = Auth::get_user_id()[1];
 
-    // @TODO Render the view.
+    $data['Orders'] = Model_Order::query()
+                        ->where('date', 'IS NOT', NULL)
+                        ->where('customer', '=', $UserId)
+                        ->get();
+
+    $this->template->title   = "Order History";
+    $this->template->content = View::forge('lists/orders', $data);
   }
 }
