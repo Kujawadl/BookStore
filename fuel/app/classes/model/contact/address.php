@@ -27,7 +27,7 @@ class Model_Contact_Address extends \Orm\Model
   // Each address belongs to one contact information record.
   protected static $_belongs_to = array(
     'Contact' => array(
-      'key_from'       => 'id',
+      'key_from'       => 'contact',
       'model_to'       => 'Model_Contact',
       'key_to'         => 'id',
       'cascade_save'   => true,
