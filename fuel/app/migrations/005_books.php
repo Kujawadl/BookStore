@@ -10,7 +10,7 @@ class Books
       array(
           'id'       => array('type' => 'int', 'auto_increment' => true, 'unsigned' => true),
           'supplier' => array('type' => 'int', 'unsigned' => true),
-          'isbn'     => array('type' => 'int', 'constraint' => 13),
+          'isbn'     => array('type' => 'varchar', 'constraint' => 13),
           'title'    => array('type' => 'varchar', 'constraint' => 100),
           'pubdate'  => array('type' => 'date'),
           'price'    => array('type' => 'double', 'unsigned' => true)

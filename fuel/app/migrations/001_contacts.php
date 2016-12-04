@@ -21,7 +21,7 @@ class Contacts
       array(
           'id'      => array('type' => 'int', 'auto_increment' => true, 'unsigned' => true),
           'contact' => array('type' => 'int', 'unsigned' => true),
-          'phone'   => array('type' => 'int', 'constraint' => 10),
+          'phone'   => array('type' => 'varchar', 'constraint' => 10),
           'type'    => array('type' => 'varchar', 'constraint' => 10)
       ),
       array('id'),
