@@ -61,10 +61,14 @@ class Controller_Orders extends Controller_Template
   {
     $UserId = Auth::get_user_id()[1];
 
-    $data['Orders'] = Model_Order::query()
-                        ->where('date', 'IS NOT', NULL)
-                        ->where('customer', '=', $UserId)
-                        ->get();
+    $Query = Model_Order::query()
+              ->where('date', 'IS NOT', NULL)
+              ->where('customer', '=', $UserId);
+
+    if ($Query->count() > 0)
+    {
+      $data['Orders'] = $Query->get();
+    }
 
     $this->template->title   = "Order History";
     $this->template->content = View::forge('lists/orders', $data);
