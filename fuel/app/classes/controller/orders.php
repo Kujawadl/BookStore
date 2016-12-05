@@ -61,12 +61,21 @@ class Controller_Orders extends Controller_Template
   {
     $UserId = Auth::get_user_id()[1];
 
-    $data['Orders'] = Model_Order::query()
-                        ->where('date', 'IS NOT', NULL)
-                        ->where('customer', '=', $UserId)
-                        ->get();
+    $Orders = Model_Order::query()
+                ->where('date', 'IS NOT', NULL)
+                ->where('customer', '=', $UserId)
+                ->order_by('date', 'desc')
+                ->get();
+
+    $Rows = array();
+    foreach ($Orders as $Order)
+    {
+      $rowdata['Order'] = $Order;
+      array_push($Rows, View::forge('lists/rows/orders', $rowdata));
+    }
+    $data['Rows'] = $Rows;
 
     $this->template->title   = "Order History";
-    $this->template->content = View::forge('lists/orders', $data);
+    $this->template->content = View::forge('lists/list', $data);
   }
 }
