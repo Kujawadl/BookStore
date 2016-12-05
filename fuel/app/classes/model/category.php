@@ -23,7 +23,10 @@ class Model_Category extends \Orm\Model
       'model_to'         => 'Model_Book',
       'key_to'           => 'id',
       'cascade_save'     => true,
-      'cascade_delete'   => false
+      'cascade_delete'   => false,
+      'conditions'       => array(
+        'order_by'       => array('Title' => 'ASC')
+      )
     )
   );
 

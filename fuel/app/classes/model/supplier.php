@@ -15,14 +15,23 @@ class Model_Supplier extends \Orm\Model
       'model_to'       => 'Model_Supplier_Rep',
       'key_to'         => 'supplier',
       'cascade_save'   => true,
-      'cascade_delete' => true
+      'cascade_delete' => true,
+      'conditions'     => array(
+        'order_by'     => array(
+          'lname' => 'ASC',
+          'fname' => 'ASC'
+        )
+      )
     ),
     'Books' => array(
       'key_from'       => 'id',
       'model_to'       => 'Model_Book',
       'key_to'         => 'supplier',
       'cascade_save'   => true,
-      'cascade_delete' => true
+      'cascade_delete' => true,
+      'conditions'     => array(
+        'order_by'     => array('Title' => 'ASC')
+      )
     )
   );
 

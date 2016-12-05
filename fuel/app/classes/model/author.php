@@ -2,33 +2,6 @@
 
 class Model_Author extends \Orm\Model
 {
-  public function TopCategories()
-  {
-    return DB::query('
-      SELECT Name
-      FROM (
-        SELECT
-          COUNT(tblcategories.Name) AS `count`,
-          tblcategories.Name
-        FROM
-          tblcategories,
-          tblbook_authors,
-          tblbook_categories
-        WHERE
-          tblbook_authors.author = :AuthorID
-        AND
-          tblbook_authors.book = tblbook_categories.book
-        AND
-          tblbook_categories.category = tblcategories.id
-        GROUP BY tblcategories.Name
-        ORDER BY `count` DESC
-        LIMIT 5
-      ) AS category_counts'
-    )
-      ->param('AuthorID', intval($this->id))
-      ->execute();
-  }
-
   protected static $_properties = array(
     'id',
     'Contact',
@@ -89,7 +62,10 @@ class Model_Author extends \Orm\Model
       'model_to'         => 'Model_Book',
       'key_to'           => 'id',
       'cascade_save'     => true,
-      'cascade_delete'   => true
+      'cascade_delete'   => true,
+      'conditions'       => array(
+        'order_by'       => array('Title' => 'ASC')
+      )
     )
   );
 
@@ -108,4 +84,31 @@ class Model_Author extends \Orm\Model
 	);
 
 	protected static $_table_name = 'authors';
+
+  public function TopCategories()
+  {
+    return DB::query('
+      SELECT Name
+      FROM (
+        SELECT
+          COUNT(tblcategories.Name) AS `count`,
+          tblcategories.Name
+        FROM
+          tblcategories,
+          tblbook_authors,
+          tblbook_categories
+        WHERE
+          tblbook_authors.author = :AuthorID
+        AND
+          tblbook_authors.book = tblbook_categories.book
+        AND
+          tblbook_categories.category = tblcategories.id
+        GROUP BY tblcategories.Name
+        ORDER BY `count` DESC
+        LIMIT 3
+      ) AS category_counts'
+    )
+      ->param('AuthorID', intval($this->id))
+      ->execute();
+  }
 }
