@@ -1,4 +1,7 @@
-<?php if (isset($BaseUrl) && isset($Pages) && isset($Page) && $Pages > 1): ?>
+<?php
+  $Page = (isset($_GET['p']) && is_numeric($_GET['p']) ? $_GET['p'] : 1);
+  if (isset($Pages)):
+?>
   <nav aria-label="Page navigation">
     <ul class="pagination">
       <!-- Previous Button -->
@@ -8,7 +11,7 @@
         </li>
       <?php else: ?>
         <li>
-          <a href="<?php echo $BaseUrl . '/' . ($Page - 1) ?>" aria-label="Previous">
+          <a href="<?php echo Uri::update_query_string(array('p', $i - 1)); ?>" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
@@ -25,7 +28,7 @@
             </li>
         <?php else: ?>
             <li>
-              <a href='<?php echo $BaseUrl . '/' . $i ?>'>
+              <a href='<?php echo Uri::update_query_string(array('p', $i)); ?>'>
                 <?php echo $i; ?>
               </a>
             </li>
@@ -38,7 +41,7 @@
         </li>
       <?php else: ?>
         <li>
-          <a href="<?php echo $BaseUrl . '/' . ($Page + 1) ?>" aria-label="Next">
+          <a href="<?php echo Uri::update_query_string(array('p', $i + 1)); ?>" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>

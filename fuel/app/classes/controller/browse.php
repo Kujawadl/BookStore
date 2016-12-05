@@ -34,8 +34,6 @@ class Controller_Browse extends Controller_Template
       $rowdata['Book'] = $Book;
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
-
-    $data['BaseUrl'] = '/Browse/Books';
     $data['Rows'] = $Rows;
 
     $this->template->title   = 'Browse books';
@@ -62,8 +60,6 @@ class Controller_Browse extends Controller_Template
       $rowdata['Author'] = $Author;
       array_push($Rows, View::forge('lists/rows/authors', $rowdata));
     }
-
-    $data['BaseUrl'] = '/Browse/Authors';
     $data['Rows'] = $Rows;
 
     $this->template->title   = 'Browse authors';
@@ -87,8 +83,6 @@ class Controller_Browse extends Controller_Template
       $rowdata['Category'] = $Category;
       array_push($Rows, View::forge('lists/rows/categories', $rowdata));
     }
-
-    $data['BaseUrl'] = '/Browse/Categories';
     $data['Rows'] = $Rows;
 
     $this->template->title   = 'Browse categories';
@@ -114,8 +108,6 @@ class Controller_Browse extends Controller_Template
       $rowdata['Book'] = $Book;
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
-
-    $data['BaseUrl'] = '/Browse/Author';
     $data['Rows'] = $Rows;
 
     $this->template->title   = 'Browse books by ' . $Author->FName . ' ' . $Author->LName;
@@ -141,8 +133,6 @@ class Controller_Browse extends Controller_Template
       $rowdata['Book'] = $Book;
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
-
-    $data['BaseUrl'] = '/Browse/Category';
     $data['Rows']    = $Rows;
 
     $this->template->title   = 'Browse ' . $Category->Name . ' books';
