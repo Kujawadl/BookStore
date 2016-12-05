@@ -2,6 +2,8 @@
   <?php
     $Pages = count($Rows) / 10;
     $Page  = (isset($_GET['p']) && is_numeric($_GET['p']) ? $_GET['p'] : 1);
+
+    echo("TEST");
   ?>
   <table class="table table-condensed table-hover">
   	<tbody>
@@ -15,13 +17,14 @@
       ?>
     </tbody>
     <?php
-      if ($Pages > 1):
+      if ($Pages > 1)
+      {
         $data['BaseUrl'] = $BaseUrl;
         $data['Pages']   = $Pages;
         $data['Page']    = $Page;
 
         echo View::forge('lists/pagination', $data);
-      endif;
+      }
     ?>
   </table>
 <?php else: ?>
