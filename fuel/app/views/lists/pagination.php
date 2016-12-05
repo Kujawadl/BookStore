@@ -10,7 +10,7 @@
       </li>
     <?php else: ?>
       <li>
-        <a href="<?php echo Uri::update_query_string(array('p', $i - 1)); ?>" aria-label="Previous">
+        <a href="<?php echo Uri::update_query_string(array('p' => $i - 1)); ?>" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -27,7 +27,7 @@
           </li>
       <?php else: ?>
           <li>
-            <a href='<?php echo Uri::update_query_string(array('p', $i)); ?>'>
+            <a href='<?php echo Uri::update_query_string(array('p' => $i)); ?>'>
               <?php echo $i; ?>
             </a>
           </li>
@@ -40,7 +40,7 @@
       </li>
     <?php else: ?>
       <li>
-        <a href="<?php echo Uri::update_query_string(array('p', $i + 1)); ?>" aria-label="Next">
+        <a href="<?php echo Uri::update_query_string(array('p' => $i + 1)); ?>" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

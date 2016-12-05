@@ -16,12 +16,16 @@
     </tbody>
     <tfoot>
       <tr>
-        <?php
-          if ($Pages > 1)
-          {
-            echo View::forge('lists/pagination', array('Pages' => $Pages));
-          }
-        ?>
+        <td>
+          <div class="row">
+            <?php
+              if ($Pages > 1)
+              {
+                echo View::forge('lists/pagination', array('Pages' => $Pages));
+              }
+            ?>
+          </div>
+        </td>
       </tr>
     </tfoot>
   </table>
