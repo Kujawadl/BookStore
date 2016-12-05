@@ -42,17 +42,17 @@ class Controller_Browse extends Controller_Template
           MATCH (tblcategories.name) AGAINST (:SearchTerm)
         )
       ORDER BY
-        title_relevance,
-        lname_relevance,
-        fname_relevance,
-        category_relevance,
-        title
+        title_relevance    DESC,
+        lname_relevance    DESC,
+        fname_relevance    DESC,
+        category_relevance DESC,
+        title              ASC
     ")->param('SearchTerm', $SearchTerm)->as_object('Model_Book')->execute();
 
     $Rows = array();
     foreach ($Books as $Book)
     {
-      $rowdata['Book'] = Model_Book::find($Book->id);
+      $rowdata['Book'] = $Book;
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
     $data['Rows'] = $Rows;
