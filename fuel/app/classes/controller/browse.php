@@ -18,51 +18,45 @@ class Controller_Browse extends Controller_Template
       Response:redirect('/Browse/Books');
     }
     $Books = DB::query("
-      SELECT
-        results.id,
-        results.isbn,
-        results.title,
-        results.pubdate,
-        results.supplier,
-        results.price
+      SELECT DISTINCT
+        tblbooks.*,
+        MATCH (tblbooks.title)     AGAINST (:SearchTerm) AS title_relevance,
+        MATCH (tblauthors.fname)   AGAINST (:SearchTerm) AS fname_relevance,
+        MATCH (tblauthors.lname)   AGAINST (:SearchTerm) AS lname_relevance,
+        MATCH (tblcategories.name) AGAINST (:SearchTerm) AS category_relevance
       FROM
-      (
-        SELECT DISTINCT
-          tblbooks.*,
-          MATCH (tblbooks.title)     AGAINST (:SearchTerm) AS title_relevance,
-          MATCH (tblauthors.fname)   AGAINST (:SearchTerm) AS fname_relevance,
-          MATCH (tblauthors.lname)   AGAINST (:SearchTerm) AS lname_relevance,
-          MATCH (tblcategories.name) AGAINST (:SearchTerm) AS category_relevance
-        FROM
-          tblbooks,
-          tblauthors,
-          tblcategories,
-          tblbook_authors,
-          tblbook_categories
-        WHERE
-          tblbook_authors.book        = tblbooks.id AND
-          tblbook_authors.author      = tblauthors.id AND
-          tblbook_categories.book     = tblbooks.id AND
-          tblbook_categories.category = tblcategories.id AND
-          (
-            MATCH (tblbooks.title)     AGAINST (:SearchTerm) OR
-            MATCH (tblauthors.fname)   AGAINST (:SearchTerm) OR
-            MATCH (tblauthors.lname)   AGAINST (:SearchTerm) OR
-            MATCH (tblcategories.name) AGAINST (:SearchTerm)
-          )
-        ORDER BY
-          title_relevance,
-          lname_relevance,
-          fname_relevance,
-          category_relevance,
-          title
-      ) as results
+        tblbooks,
+        tblauthors,
+        tblcategories,
+        tblbook_authors,
+        tblbook_categories
+      WHERE
+        tblbook_authors.book        = tblbooks.id AND
+        tblbook_authors.author      = tblauthors.id AND
+        tblbook_categories.book     = tblbooks.id AND
+        tblbook_categories.category = tblcategories.id AND
+        (
+          MATCH (tblbooks.title)     AGAINST (:SearchTerm) OR
+          MATCH (tblauthors.fname)   AGAINST (:SearchTerm) OR
+          MATCH (tblauthors.lname)   AGAINST (:SearchTerm) OR
+          MATCH (tblcategories.name) AGAINST (:SearchTerm)
+        )
+      ORDER BY
+        title_relevance,
+        lname_relevance,
+        fname_relevance,
+        category_relevance,
+        title
     ")->param('SearchTerm', $SearchTerm)->as_object('Model_Book')->execute();
 
     $Rows = array();
     foreach ($Books as $Book)
     {
+<<<<<<< HEAD
       $rowdata['Book'] = $Book;
+=======
+      $rowdata['Book'] = Model_Book::find($Book->id);
+>>>>>>> 64a12fb895d475f653c5a5a537a601203f29b9f2
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
     $data['Rows'] = $Rows;
