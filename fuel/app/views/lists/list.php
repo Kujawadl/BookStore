@@ -8,7 +8,7 @@
       <?php
         $Start = 10 * ($Page - 1);
         $End = $Start + 10;
-        for ($i = $Start; $i < $End; $i++)
+        for ($i = $Start; $i < $End && $i < count($Rows); $i++)
         {
           echo($Rows[$i]);
         }
