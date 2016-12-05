@@ -18,7 +18,7 @@ class Controller_Cart extends Controller_Template
 
     if (!Auth::check())
     {
-      Response::Redirect('/Account/SignIn');
+      Response::redirect('/Account/SignIn');
     } else {
       $UserId = Auth::get_user_id()[1];
 
