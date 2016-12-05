@@ -21,7 +21,7 @@
         $data['Pages']   = $Pages;
         $data['Page']    = $Page;
 
-        echo View::forge('pagination', $data);
+        echo View::forge('lists/pagination', $data);
       }
     ?>
   </table>
