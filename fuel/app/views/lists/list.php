@@ -14,16 +14,18 @@
         }
       ?>
     </tbody>
-    <?php
-      if ($Pages > 1)
-      {
-        $data['BaseUrl'] = $BaseUrl;
-        $data['Pages']   = $Pages;
-        $data['Page']    = $Page;
+    <tfoot>
+      <?php
+        if ($Pages > 1)
+        {
+          $data['BaseUrl'] = $BaseUrl;
+          $data['Pages']   = $Pages;
+          $data['Page']    = $Page;
 
-        echo View::forge('lists/pagination', $data, false);
-      }
-    ?>
+          echo View::forge('lists/pagination', $data);
+        }
+      ?>
+    </tfoot>
   </table>
 <?php else: ?>
   <p>No results.</p>
