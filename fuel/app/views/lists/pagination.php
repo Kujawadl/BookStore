@@ -1,4 +1,4 @@
-<? if (isset($BaseUrl) && isset($Pages) && isset($Page) && $Pages > 1): ?>
+<?php if (isset($BaseUrl) && isset($Pages) && isset($Page) && $Pages > 1): ?>
   <tfoot>
     <nav aria-label="Page navigation">
       <ul class="pagination">
