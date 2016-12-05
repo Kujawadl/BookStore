@@ -1,4 +1,4 @@
-<?php if (isset($Books)): ?>
+<?php if (isset($Book)): ?>
   <tr>
     <td>
       <div class='row'>
