@@ -22,14 +22,23 @@ class Controller_Browse extends Controller_Template
    */
   public function action_books($PageNum = 1)
   {
-    $data['Books'] = Model_Book::find('all',
+    $Books = Model_Book::find('all',
       array(
         'order_by' => array('title' => 'asc')
       )
     );
 
+    $Rows = array();
+    foreach ($Books as $Book)
+    {
+      $rowdata['Book'] = $Book;
+      array_push($Rows, View::forge('lists/rows/books', $rowdata));
+    }
+    $data['Rows'] = $Rows;
+
     $this->template->title   = 'Browse books';
-    $this->template->content = View::forge('lists/books', $data);
+    //$this->template->content = View::forge('lists/list', $data);
+    $this->template->content = View::forge('debug/codesnippet', array('Code' => $Rows));
   }
 
   /**
@@ -37,7 +46,7 @@ class Controller_Browse extends Controller_Template
    */
   public function action_authors($PageNum = 1)
   {
-    $data['Authors'] = Model_Author::find('all',
+    $Authors = Model_Author::find('all',
       array(
         'order_by' => array(
           'lname' => 'asc',
@@ -46,8 +55,16 @@ class Controller_Browse extends Controller_Template
       )
     );
 
+    $Rows = array();
+    foreach ($Authors as $Author)
+    {
+      $rowdata['Author'] = $Author;
+      array_push($Rows, View::forge('lists/rows/authors', $rowdata));
+    }
+    $data['Rows'] = $Rows;
+
     $this->template->title   = 'Browse authors';
-    $this->template->content = View::forge('lists/authors', $data);
+    $this->template->content = View::forge('lists/list', $data);
   }
 
   /**
@@ -55,14 +72,22 @@ class Controller_Browse extends Controller_Template
    */
   public function action_categories($PageNum = 1)
   {
-    $data['Categories'] = Model_Category::find('all',
+    $Categories = Model_Category::find('all',
       array(
         'order_by' => array('name' => 'asc')
       )
     );
 
+    $Rows = array();
+    foreach ($Categories as $Category)
+    {
+      $rowdata['Category'] = $Category;
+      array_push($Rows, View::forge('lists/rows/categories', $rowdata));
+    }
+    $data['Rows'] = $Rows;
+
     $this->template->title   = 'Browse categories';
-    $this->template->content = View::forge('lists/categories', $data);
+    $this->template->content = View::forge('lists/list', $data);
   }
 
   /**
@@ -76,11 +101,18 @@ class Controller_Browse extends Controller_Template
     }
 
     $Author = Model_Author::find($AuthorId);
+    $Books = (isset($Author->Books) ? $Author->Books : array());
 
-    $data['Books'] = $Author->Books;
+    $Rows = array();
+    foreach ($Books as $Book)
+    {
+      $rowdata['Book'] = $Book;
+      array_push($Rows, View::forge('lists/rows/books', $rowdata));
+    }
+    $data['Rows'] = $Rows;
 
     $this->template->title   = 'Browse books by ' . $Author->FName . ' ' . $Author->LName;
-    $this->template->content = View::forge('lists/books', $data);
+    $this->template->content = View::forge('lists/list', $data);
   }
 
   /**
@@ -94,10 +126,17 @@ class Controller_Browse extends Controller_Template
     }
 
     $Category = Model_Category::find($CategoryId);
+    $Books = (isset($Category->Books) ? $Category->Books : array());
 
-    $data['Books'] = $Category->Books;
+    $Rows = array();
+    foreach ($Books as $Book)
+    {
+      $rowdata['Book'] = $Book;
+      array_push($Rows, View::forge('lists/rows/books', $rowdata));
+    }
+    $data['Rows']    = $Rows;
 
     $this->template->title   = 'Browse ' . $Category->Name . ' books';
-    $this->template->content = View::forge('lists/books', $data);
+    $this->template->content = View::forge('lists/list', $data);
   }
 }
