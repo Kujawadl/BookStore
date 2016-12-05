@@ -35,10 +35,9 @@ class Controller_Browse extends Controller_Template
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
     $data['Rows'] = $Rows;
-    $this->template->content = View::forge('debug/codesnippet', array('Code' => $Rows[0]));
 
     $this->template->title   = 'Browse books';
-    //$this->template->content = View::forge('lists/list', $data);
+    $this->template->content = View::forge('lists/list', $data);
   }
 
   /**
