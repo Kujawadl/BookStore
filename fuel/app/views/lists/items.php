@@ -24,6 +24,7 @@
                       <span class='glyphicon glyphicon-remove-sign glyphicon-delete' style='font-size: 1.5em; top: 0.25em;' aria-hidden='true'></span>
                     </a>
                   <?php endif; ?>
+                </form>
               </div>
             </div>
             <div class='row'>
