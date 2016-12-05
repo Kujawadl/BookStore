@@ -10,19 +10,18 @@
         $End = $Start + 10;
         for ($i = $Start; $i < $End; $i++)
         {
-          echo $Rows[$i];
+          echo($Rows[$i]);
         }
       ?>
     </tbody>
     <?php
-      if ($Pages > 1)
-      {
+      if ($Pages > 1):
         $data['BaseUrl'] = $BaseUrl;
         $data['Pages']   = $Pages;
         $data['Page']    = $Page;
 
         echo View::forge('lists/pagination', $data);
-      }
+      endif;
     ?>
   </table>
 <?php else: ?>
