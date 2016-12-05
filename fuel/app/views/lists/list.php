@@ -17,7 +17,7 @@
     <tfoot>
       <tr>
         <td>
-          <div class="row">
+          <div class="row text-center">
             <?php
               if ($Pages > 1)
               {
