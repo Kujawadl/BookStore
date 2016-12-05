@@ -1,6 +1,6 @@
 <?php if (isset($Rows) && count($Rows) > 0): ?>
   <?php
-    $Pages = (count($Rows) / 10) + 1;
+    $Pages = intdiv(count($Rows), 10) + 1;
     $Page  = (isset($_GET['p']) && is_numeric($_GET['p']) ? $_GET['p'] : 1);
   ?>
   <table class="table table-condensed table-hover">
