@@ -19,7 +19,11 @@ class Controller_Browse extends Controller_Template
     }
     $Books = DB::query("
       SELECT DISTINCT
-        tblbooks.*,
+        tblbooks.id      AS id,
+        tblbooks.isbn    AS ISBN,
+        tblbooks.title   AS Title,
+        tblbooks.pubdate AS PubDate,
+        tblbooks.price   AS Price,
         MATCH (tblbooks.title)     AGAINST (:SearchTerm) AS title_relevance,
         MATCH (tblauthors.fname)   AGAINST (:SearchTerm) AS fname_relevance,
         MATCH (tblauthors.lname)   AGAINST (:SearchTerm) AS lname_relevance,
