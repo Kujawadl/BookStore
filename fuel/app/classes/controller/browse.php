@@ -52,11 +52,7 @@ class Controller_Browse extends Controller_Template
     $Rows = array();
     foreach ($Books as $Book)
     {
-<<<<<<< HEAD
-      $rowdata['Book'] = $Book;
-=======
       $rowdata['Book'] = Model_Book::find($Book->id);
->>>>>>> 64a12fb895d475f653c5a5a537a601203f29b9f2
       array_push($Rows, View::forge('lists/rows/books', $rowdata));
     }
     $data['Rows'] = $Rows;
