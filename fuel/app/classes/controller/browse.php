@@ -14,7 +14,52 @@ class Controller_Browse extends Controller_Template
    */
   public function action_search($SearchTerm = NULL)
   {
-    // @TODO Render the view.
+    if (!isset($SearchTerm) || $SearchTerm == '') {
+      Response:redirect('/Browse/Books');
+    }
+    $Books = DB::query("
+      SELECT DISTINCT
+        tblbooks.*,
+        MATCH (tblbooks.title)     AGAINST (:SearchTerm) AS title_relevance,
+        MATCH (tblauthors.fname)   AGAINST (:SearchTerm) AS fname_relevance,
+        MATCH (tblauthors.lname)   AGAINST (:SearchTerm) AS lname_relevance,
+        MATCH (tblcategories.name) AGAINST (:SearchTerm) AS category_relevance
+      FROM
+        tblbooks,
+        tblauthors,
+        tblcategories,
+        tblbook_authors,
+        tblbook_categories
+      WHERE
+        tblbook_authors.book        = tblbooks.id AND
+        tblbook_authors.author      = tblauthors.id AND
+        tblbook_categories.book     = tblbooks.id AND
+        tblbook_categories.category = tblcategories.id AND
+        (
+          MATCH (tblbooks.title)     AGAINST (:SearchTerm) OR
+          MATCH (tblauthors.fname)   AGAINST (:SearchTerm) OR
+          MATCH (tblauthors.lname)   AGAINST (:SearchTerm) OR
+          MATCH (tblcategories.name) AGAINST (:SearchTerm)
+        )
+      ORDER BY
+        title_relevance,
+        lname_relevance,
+        fname_relevance,
+        category_relevance,
+        title
+    ")->param('SearchTerm', $SearchTerm)->as_object('Model_Book')->execute();
+
+    $Rows = array();
+    foreach ($Books as $Book)
+    {
+      $rowdata['Book'] = Model_Book::find($Book->id);
+      array_push($Rows, View::forge('lists/rows/books', $rowdata));
+    }
+    $data['Rows'] = $Rows;
+
+    $this->template->title    = 'Search results';
+    $this->template->subtitle = "'$SearchTerm'";
+    $this->template->content  = View::forge('lists/list', $data);
   }
 
   /**
