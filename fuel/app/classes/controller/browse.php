@@ -62,7 +62,7 @@ class Controller_Browse extends Controller_Template
     $data['Rows'] = $Rows;
 
     $this->template->title    = 'Search results';
-    $this->template->subtitle = "'$SearchTerm'";
+    $this->template->subtitle = count($Rows) . " results for '$SearchTerm'";
     $this->template->content  = View::forge('lists/list', $data);
   }
 
