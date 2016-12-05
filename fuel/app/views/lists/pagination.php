@@ -15,7 +15,9 @@
           </li>
         <?php endif; ?>
         <!-- Pages -->
-        <?php for ($i = 0; $i < $Pages; $i++): ?>
+        <?php $Start = ($Page - 3 > 0     ? $Page - 3 : 1); ?>
+        <?php $End = ($Page + 3 <= $Pages ? $Page + 3 : $Pages); ?>
+        <?php for ($i = $Start; $i <= $End; $i++): ?>
           <?php if ($i == $Page): ?>
               <li class='active'>
                 <?php echo $i; ?>

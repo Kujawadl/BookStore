@@ -2,8 +2,6 @@
   <?php
     $Pages = count($Rows) / 10;
     $Page  = (isset($_GET['p']) && is_numeric($_GET['p']) ? $_GET['p'] : 1);
-
-    echo("TEST");
   ?>
   <table class="table table-condensed table-hover">
   	<tbody>
