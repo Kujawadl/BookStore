@@ -15,12 +15,14 @@
       ?>
     </tbody>
     <tfoot>
-      <?php
-        if ($Pages > 1)
-        {
-          echo View::forge('lists/pagination', array('Pages' => $Pages));
-        }
-      ?>
+      <tr>
+        <?php
+          if ($Pages > 1)
+          {
+            echo View::forge('lists/pagination', array('Pages' => $Pages));
+          }
+        ?>
+      </tr>
     </tfoot>
   </table>
 <?php else: ?>
