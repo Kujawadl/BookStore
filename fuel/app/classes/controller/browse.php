@@ -38,7 +38,7 @@ class Controller_Browse extends Controller_Template
 
     $this->template->title   = 'Browse books';
     //$this->template->content = View::forge('lists/list', $data);
-    $this->template->content = View::forge('debug/codesnippet', array('Code', $Rows));
+    $this->template->content = View::forge('debug/codesnippet', array('Code' => $Rows));
   }
 
   /**
