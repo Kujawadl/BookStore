@@ -50,7 +50,7 @@ class Controller_Account extends Controller_Template
       $Contact->save();
 
       $ContactEmail = Model_Contact_Email::forge();
-      $ContactEmail->id = $Contact->id;
+      $ContactEmail->contact = $Contact->id;
       $ContactEmail->Email = Input::post('email');
       $ContactEmail->save();
 
@@ -86,5 +86,10 @@ class Controller_Account extends Controller_Template
   public function post_update()
   {
     // @TODO Implement customer info update.
+  }
+
+  public function get_Account()
+  {
+    
   }
 }

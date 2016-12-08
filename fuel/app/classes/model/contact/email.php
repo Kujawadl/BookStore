@@ -4,6 +4,7 @@ class Model_Contact_Email extends \Orm\Model
 {
   protected static $_properties = array(
     'id',
+    'contact',
     'Email'
   );
 
