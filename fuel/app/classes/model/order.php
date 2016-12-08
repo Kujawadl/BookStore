@@ -97,16 +97,14 @@ class Model_Order extends \Orm\Model
 
   public function Address()
   {
-    $Address = Model_Contact_Address::query()
-                ->where('id', '=', $this->Ship_To)
-                ->get();
+    $Address = Model_Contact_Address::find($this->Ship_To);
 
     $CustomerId = Auth::get_profile_fields('CustomerId');
     $Customer = Model_Customer::find($CustomerId);
 
     return
-      $Customer->FName . ' ' . $Customer->LName . "\n" .
-      $Address->Street . "\n" .
+      $Customer->FName . ' ' . $Customer->LName . "<br />" .
+      $Address->Street . "<br />" .
       $Address->City . ", " . $Address->State . " " . $Address->Zip;
   }
 }

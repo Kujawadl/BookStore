@@ -3,7 +3,7 @@
     <td>
       <div class='row'>
         <div class='col-md-6'>
-          <h4><?php echo($Order->id); ?></h4>
+          <h4>Order #: <?php echo($Order->id); ?></h4>
           <h5><?php echo($Order->Date); ?></h5>
           <?php echo($Order->Quantity() . (($Order->Quantity()) > 1 ? ' items' : 'item')); ?>
         </div>
