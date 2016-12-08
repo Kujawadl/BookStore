@@ -56,6 +56,7 @@
   			<p>
   				Proudly powered by <a href="http://fuelphp.com">FuelPHP</a>, <a href="http://jquery.com/">jQuery</a>, and <a href="http://getbootstrap.com/">Bootstrap</a>.<br>
           <small>Icons provided by <a href="http://icons8.com">Icons8</a> and <a href="http://glyphicons.com">Glyphicons</a>.</small><br>
+          <small>Thanks to <a href="http://t4t5.github.io/sweetalert/">SweetAlert</a> and <a href="https://highlightjs.org/">Highlight.js</a> as well.</small><br>
           <small>Licensed under <a href="/index/license"><span class='label label-default'><span class='glyphicon glyphicon-globe'></span> GPL-3.0</span></a></small>
   			</p>
       </div>
