@@ -138,6 +138,20 @@ class Controller_Browse extends Controller_Template
     $this->template->content = View::forge('lists/list', $data);
   }
 
+  public function action_book($BookId = NULL)
+  {
+    if ($BookId == NULL) {
+      Response::Redirect('/Browse/Books');
+    } else {
+      $Query = Model_Book::query()->where('id', '=', $BookId);
+      if ($Query->count() == 0) { throw new HttpNotFoundException; }
+      $Book = $Query->get_one();
+
+      $this->template->title = $Book->Title;
+      $this->template->content = View::forge('detail/book', array('Book' => $Book));
+    }
+  }
+
   /**
    * Lists all books by the given author.
    */

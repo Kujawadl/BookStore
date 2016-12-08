@@ -14,7 +14,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title><?php echo $title; ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>Book Store</title>
 	<?php echo Asset::css('bootstrap.css'); ?>
   <?php echo Asset::css('bootstrap-theme.css'); ?>
   <?php echo Asset::css('sweetalert.css'); ?>
@@ -24,6 +26,7 @@
   <?php echo Asset::js('jquery-3.1.0.js'); ?>
   <?php echo Asset::js('bootstrap.js'); ?>
   <?php echo Asset::js('sweetalert.min.js'); ?>
+  <?php echo Asset::js('jeditable.min.js'); ?>
   <?php echo Asset::js('site.js'); ?>
 
   <!-- iOS homescreen icon -->
@@ -44,7 +47,7 @@
   <?php echo render('navbar'); ?>
 	<div class="container">
 		<div class="col-md-12">
-			<h1><?php echo $title . (isset($subtitle) ? "<br/><small>$subtitle</small>" : '');?></h1>
+			<h1><?php echo $title . "&emsp;" . (isset($subtitle) ? "<small>$subtitle</small>" : '');?></h1>
       <?php echo View::forge('flash'); ?>
 		</div>
 		<div class="col-md-12">

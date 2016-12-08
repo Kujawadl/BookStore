@@ -3,7 +3,11 @@
     <td>
       <div class='row'>
         <div class='col-md-6'>
-          <h4><?php echo($Book->Title); ?></h4>
+          <h4>
+            <a href="/browse/book/<?php echo $Book->id; ?>">
+              <?php echo($Book->Title); ?>
+            </a>
+          </h4>
         </div>
         <div class='col-md-3'>
           <h5>$<?php echo($Book->Price); ?></h5>

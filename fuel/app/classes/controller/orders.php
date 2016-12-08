@@ -2,9 +2,6 @@
 
 class Controller_Orders extends Controller_Template
 {
-  /**
-   * Ensures user is logged in before trying to view their orders.
-   */
   public function before()
   {
     parent::before();
@@ -19,11 +16,6 @@ class Controller_Orders extends Controller_Template
     return self::action_list();
   }
 
-  /**
-   * Returns details about a specific order.
-   *
-   * @param integer OrderId The database id of the order to view.
-   */
   public function action_view($OrderId = NULL)
   {
     if ($OrderId == NULL)
@@ -36,8 +28,12 @@ class Controller_Orders extends Controller_Template
 
     $Query = Model_Order::query()
               ->where('id', '=', $OrderId)
-              ->where('date', 'IS NOT', NULL)
-              ->where('customer', '=', $UserId);
+              ->where('date', 'IS NOT', NULL);
+    if (! Auth::member(100))
+    {
+      $Query = $Query->where('customer', '=', $UserId);
+    }
+    
     if ($Query->count() == 1) {
       // Get the current cart
       $Order = $Query->get_one();
@@ -52,12 +48,7 @@ class Controller_Orders extends Controller_Template
     }
   }
 
-  /**
-   * Returns a list of the user's order history, sorted by date, newest first.
-   *
-   * @param integer PageNum the page number to view.
-   */
-  public function action_list($PageNum = 1)
+  public function action_list()
   {
     $UserId = Auth::get_user_id()[1];
 

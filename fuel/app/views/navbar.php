@@ -19,14 +19,16 @@ if (Auth::check())
 
   <nav class='navbar <?php echo Auth::member(100) ? 'navbar-inverse' : 'navbar-default' ?>' role='navigation'>
     <div class="container-fluid">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-book"></span> Home</a>
+      </div>
       <div id='navbar' class='collapse navbar-collapse'>
         <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">Browse<span class="caret"></span></a>
             <ul class="dropdown-menu">
