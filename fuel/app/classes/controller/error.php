@@ -6,4 +6,9 @@ class Controller_Error extends Controller_Template
   {
     $this->template->content = View::forge('error/404');
   }
+
+  public function action_403()
+  {
+    $this->template->content = View::forge('error/403');
+  }
 }
