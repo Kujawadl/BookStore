@@ -1,2 +1,13 @@
+# Composer stuff
+composer.lock
+
+# Fuel stuff
 fuel/app/logs/*/*/*
 fuel/app/cache/*/*
+
+# PhpMyAdmin stuff
+phpmyadmin
+
+# DS_Store stuff placed by Mac Finder
+*DS_Store
+._*

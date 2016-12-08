@@ -6,9 +6,12 @@ return array(
     array(
       'default' => 
       array(
-        0 => '001_create_colleges',
-        1 => '002_create_departments',
-        2 => '003_create_courses',
+        0 => '001_contacts',
+        1 => '002_customers',
+        2 => '003_authors',
+        3 => '004_suppliers',
+        4 => '005_books',
+        5 => '006_orders',
       ),
     ),
     'module' => 

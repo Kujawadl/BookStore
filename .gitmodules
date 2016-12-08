@@ -19,3 +19,4 @@
 [submodule "public/phpmyadmin"]
 	path = public/phpmyadmin
 	url = git://github.com/phpmyadmin/phpmyadmin.git
+  ignore = dirty
