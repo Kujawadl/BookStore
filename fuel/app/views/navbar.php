@@ -70,7 +70,7 @@ if (Auth::check())
                 </li>
                 <li>
                   <a href="/account/settings">
-                    <span class="glyphicon glyphicon-cog"></span> Settings
+                    <span class="glyphicon glyphicon-pencil"></span> Settings
                   </a>
                 </li>
                 <li>
@@ -79,9 +79,20 @@ if (Auth::check())
                   </a>
                 </li>
                 <?php if (Auth::member(100)): ?>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <a href="#">
+                      <span class="glyphicon glyphicon-cog"></span> Administration
+                    </a>
+                  </li>
+                  <li><a href="/admin/books">&emsp;&emsp;Books</a></li>
+                  <li><a href="/admin/authors">&emsp;&emsp;Authors</a></li>
+                  <li><a href="/admin/suppliers">&emsp;&emsp;Suppliers</a></li>
+                  <li><a href="/admin/customers">&emsp;&emsp;Customers</a></li>
+                  <li><a href="/admin/orders">&emsp;&emsp;Orders</a></li>
                   <li>
                     <a href="/phpMyAdmin/index.php" target="_blank">
-                      <span class="glyphicon glyphicon-cog"></span> phpMyAdmin
+                      <span class="glyphicon glyphicon-wrench"></span> phpMyAdmin
                     </a>
                   </li>
                 <?php endif ?>
